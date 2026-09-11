@@ -1,0 +1,5 @@
+# Skills/
+
+本目录挂载到容器内的 `/app/Skills` 与 `/skills`。
+
+当前为占位目录（emsclaw v0 已移除默认外部 skill）。用户可通过 `find-skills` 动态添加 skill 到此目录。

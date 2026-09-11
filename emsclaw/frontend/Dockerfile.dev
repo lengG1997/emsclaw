@@ -1,0 +1,16 @@
+# Dev 烘焙镜像：源码+依赖烘焙进镜像，跑 vite dev server（无 HMR）。
+# 不 bind-mount 源码，保证容器内代码与镜像一致；改前端代码需重新 docker compose build frontend。
+FROM node:20-bookworm-slim
+WORKDIR /app
+
+ENV NPM_CONFIG_REGISTRY=https://registry.npmmirror.com
+ENV NPM_CONFIG_CACHE=/npm-cache
+ENV TZ=Asia/Shanghai
+
+COPY package*.json ./
+RUN npm ci --no-fund --no-audit
+
+COPY . .
+
+EXPOSE 5173
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "5173"]

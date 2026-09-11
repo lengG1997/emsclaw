@@ -1,0 +1,29 @@
+[project]
+name = "emsclaw"
+version = "0.1.0"
+description = "emsclaw monorepo — uv workspace 根（本身不含代码，依赖在各成员服务里声明）"
+requires-python = ">=3.13"
+dependencies = []
+
+# 根目录不构建为包，仅作为 workspace 根
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = [
+    "emsclaw/backend",
+    "emsclaw/task-service",
+    "emsclaw/sandbox",
+]
+
+# 国内镜像源，default=true 表示不再回退 PyPI（换源时改这里与各 Dockerfile 的 PIP_INDEX_URL）
+[[tool.uv.index]]
+url = "https://mirrors.aliyun.com/pypi/simple/"
+default = true
+
+# pytest 配置（rootdir = 仓库根）。testpaths 指向 emsclaw/tests（仓库根相对路径）。
+# backend/pyproject.toml 里也有同名配置（testpaths=["../tests"]，相对 backend），
+# 供从 emsclaw/backend 目录运行时使用；两处保持 asyncio_mode=auto 一致。
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["emsclaw/tests"]

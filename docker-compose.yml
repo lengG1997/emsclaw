@@ -1,0 +1,213 @@
+# BuildKit 用于 Dockerfile 中 apt/pip/npm 构建缓存，建议先执行: export DOCKER_BUILDKIT=1
+services:
+  sandbox:
+    build:
+      context: .
+      dockerfile: emsclaw/sandbox/Dockerfile
+    image: emsclaw-sandbox:local
+    security_opt:
+      - seccomp:unconfined
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    shm_size: "2gb"
+    mem_limit: ${SANDBOX_MEM_LIMIT:-8g}
+    cpus: ${SANDBOX_CPUS:-4}
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - ./Skills:/skills:ro
+      - ./emsclaw/builtin-skills:/builtin-skills:ro
+      - ./workspace:/home/emsclaw
+    ports:
+      - "18080:8080"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8080/v1/docs >/dev/null || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: agentone
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-Yp51Bi1eEjC77sAt}
+      POSTGRES_DB: ai_agent
+    ports:
+      - "5433:5432"
+    volumes:
+      - emsclaw_postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U agentone -d ai_agent"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: emsclaw/backend/Dockerfile
+    image: emsclaw-backend:local
+    # 源码不挂载：backend 源码、builtin-skills、Skills 均在建镜像时 COPY 进镜像。
+    # 这样镜像自包含、不依赖宿主机文件系统特性；代价是改代码后必须重新 build。
+    volumes:
+      - ./workspace:/home/emsclaw
+    environment:
+      SANDBOX_REST_URL: http://sandbox:8080
+      WORKSPACE_DIR: /home/emsclaw
+      DS_API_KEY: ${API_KEY:-}
+      DS_URL: ${API_BASE-https://api.deepseek.com/v1}
+      DS_MODEL: ${MODEL_NAME-deepseek-chat}
+      TEMPERATURE: ${TEMPERATURE-0.7}
+      MAX_TOKENS: ${MAX_TOKENS-2000}
+      LOG_LEVEL: ${LOG_LEVEL-INFO}
+      FILE_DOWNLOAD_ALLOWED_PREFIXES: /tmp,/app,/home/emsclaw
+      TZ: Asia/Shanghai
+      AUTH_PROVIDER: local
+      BOOTSTRAP_ADMIN_ENABLED: "true"
+      BOOTSTRAP_ADMIN_USERNAME: ${BOOTSTRAP_ADMIN_USERNAME:-admin}
+      BOOTSTRAP_ADMIN_PASSWORD: ${BOOTSTRAP_ADMIN_PASSWORD:-admin123}
+      BOOTSTRAP_ADMIN_FULLNAME: ${BOOTSTRAP_ADMIN_FULLNAME:-Admin}
+      BOOTSTRAP_ADMIN_EMAIL: ${BOOTSTRAP_ADMIN_EMAIL:-admin@localhost}
+      BOOTSTRAP_UPDATE_ADMIN_PASSWORD: "true"
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ai_agent
+      POSTGRES_USER: agentone
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-Yp51Bi1eEjC77sAt}
+      TASK_SERVICE_API_KEY: ${TASK_SERVICE_API_KEY:-}
+      # 诊断模式：记录每步 LLM 调用的完整上下文，用于质量分析。默认关闭（会显著增大日志量）
+      DIAGNOSTIC_MODE: ${DIAGNOSTIC_MODE:-0}
+      IM_ENABLED: ${IM_ENABLED:-true}
+      IM_RESPONSE_TIMEOUT: 300
+      IM_MAX_MESSAGE_LENGTH: 4000
+      LARK_ENABLED: ${LARK_ENABLED:-true}
+      LARK_APP_ID: ${LARK_APP_ID-}
+      LARK_APP_SECRET: ${LARK_APP_SECRET-}
+      # Agent 版本号：写入 Langfuse trace metadata + tag (v<x>)，
+      # 改了提示词/skill 后 bump 这个值，Langfuse dashboard 按 tag 对比不同版本质量
+      AGENT_VERSION: ${AGENT_VERSION:-0.1}
+    ports:
+      - "12001:8000"
+    command: >
+      python -m uvicorn emsclaw_backend.main:app --host 0.0.0.0 --port 8000
+    restart: unless-stopped
+    depends_on:
+      sandbox:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8000/api/v1/auth/status >/dev/null || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  # ── 任务调度服务（Task Service）──
+  scheduler_api:
+    build:
+      context: .
+      dockerfile: emsclaw/task-service/Dockerfile
+    image: emsclaw-task-service:local
+    environment:
+      TZ: Asia/Shanghai
+      DISPLAY_TIMEZONE: ${DISPLAY_TIMEZONE:-Asia/Shanghai}
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ai_agent
+      POSTGRES_USER: agentone
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-Yp51Bi1eEjC77sAt}
+      REDIS_URL: redis://redis:6379/0
+      CHAT_SERVICE_URL: http://backend:8000
+      CHAT_SERVICE_API_KEY: ${TASK_SERVICE_API_KEY:-}
+      DS_API_KEY: ${API_KEY:-}
+      DS_URL: ${API_BASE:-https://api.deepseek.com/v1}
+      DS_MODEL: ${MODEL_NAME:-deepseek-chat}
+    ports:
+      - "12002:8001"
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8001
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      backend:
+        condition: service_started
+
+  celery_worker:
+    image: emsclaw-task-service:local
+    pull_policy: never
+    environment:
+      TZ: Asia/Shanghai
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ai_agent
+      POSTGRES_USER: agentone
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-Yp51Bi1eEjC77sAt}
+      REDIS_URL: redis://redis:6379/0
+      CHAT_SERVICE_URL: http://backend:8000
+      CHAT_SERVICE_API_KEY: ${TASK_SERVICE_API_KEY:-}
+    command: celery -A app.celery_app worker --loglevel=info
+    restart: unless-stopped
+    depends_on:
+      scheduler_api:
+        condition: service_started
+      redis:
+        condition: service_started
+      backend:
+        condition: service_started
+
+  celery_beat:
+    image: emsclaw-task-service:local
+    pull_policy: never
+    environment:
+      TZ: Asia/Shanghai
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ai_agent
+      POSTGRES_USER: agentone
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-Yp51Bi1eEjC77sAt}
+      REDIS_URL: redis://redis:6379/0
+    command: celery -A app.celery_app beat --loglevel=info
+    restart: unless-stopped
+    depends_on:
+      scheduler_api:
+        condition: service_started
+      redis:
+        condition: service_started
+
+  frontend:
+    build:
+      context: ./emsclaw/frontend
+      dockerfile: Dockerfile.dev
+    working_dir: /app
+    environment:
+      BACKEND_URL: http://backend:8000
+      # 定时任务服务：Vite 代理 /task-service 时转发到该地址（容器内使用服务名）
+      TASK_SERVICE_URL: http://scheduler_api:8001
+      # 任务执行时间展示时区，默认北京时间（与 DISPLAY_TIMEZONE 一致）
+      VITE_DISPLAY_TIMEZONE: ${DISPLAY_TIMEZONE:-Asia/Shanghai}
+      NPM_CONFIG_REGISTRY: https://registry.npmmirror.com
+      NPM_CONFIG_CACHE: /npm-cache
+      CHOKIDAR_USEPOLLING: "true"
+      CHOKIDAR_INTERVAL: "300"
+      TZ: Asia/Shanghai
+    ports:
+      - "5173:5173"
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_started
+      scheduler_api:
+        condition: service_started
+
+volumes:
+  emsclaw_postgres_data:
+  emsclaw_frontend_node_modules:
+  emsclaw_frontend_npm_cache:

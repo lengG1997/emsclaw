@@ -1,0 +1,213 @@
+# Langfuse v4 自托管可观测性栈（override 文件）。
+#
+# 用法（与主 compose 叠加）：
+#   docker compose -f docker-compose.yml -f docker-compose.langfuse.yml up -d
+#   docker compose -f docker-compose.yml -f docker-compose.langfuse.yml build backend
+#
+# 仅运行主栈（不含 Langfuse）时，backend 不会收到 LANGFUSE_* 环境变量，
+# tracing 自动关闭，Agent 运行不受影响。
+#
+# 该文件为 Langfuse 提供独立的基础设施（postgres / redis / clickhouse / minio），
+# 与主栈的 ai_agent DB、Celery redis 完全隔离，互不污染。
+#
+# 首次启动后通过 headless 初始化自动创建组织 / 项目 / 管理员用户 / API Key，
+# backend 用同一组 Key 直连，无需手动在 UI 里建项目。UI: http://localhost:3001
+#
+# 运行前先准备环境变量：cp .env.example .env，填好 LANGFUSE_PUBLIC_KEY / LANGFUSE_SECRET_KEY
+# 等条目（下面标 # CHANGEME 的项在未设置时会使用示例值，生产部署务必替换为随机长串）。
+
+services:
+  # ── 把 Langfuse 接入 backend（环境变量叠加到主 compose 的 backend 服务）──
+  backend:
+    environment:
+      # Langfuse 可观测性总开关；未叠加本文件时 backend 无此变量 -> tracing 关闭
+      LANGFUSE_ENABLED: "true"
+      # 由 .env 提供；初始化 org/project 与 backend 必须用同一组 Key
+      LANGFUSE_PUBLIC_KEY: ${LANGFUSE_PUBLIC_KEY:?未设置 LANGFUSE_PUBLIC_KEY，请先 cp .env.example .env 并填写}
+      LANGFUSE_SECRET_KEY: ${LANGFUSE_SECRET_KEY:?未设置 LANGFUSE_SECRET_KEY，请先 cp .env.example .env 并填写}
+      # 容器内通过服务名访问 langfuse-web；宿主机浏览器访问 http://localhost:3000
+      LANGFUSE_BASE_URL: http://langfuse-web:3000
+      LANGFUSE_HOST: http://langfuse-web:3000
+      LANGFUSE_TRACING_ENVIRONMENT: emsclaw-local
+      # Agent 版本号：写入 Langfuse trace 的 metadata + tag (v<x>)，
+      # 改了提示词/skill 后 bump 这个版本号，dashboard 按 tag 对比不同版本质量
+      # 默认 0.1；用 AGENT_VERSION 环境变量覆盖（如 docker compose --env-file .env 时）
+      AGENT_VERSION: ${AGENT_VERSION:-0.1}
+
+  # ─────────────────────────────────────────────────────────────
+  # Langfuse 应用层（web + worker 共享同一套环境）
+  # ─────────────────────────────────────────────────────────────
+  langfuse-worker:
+    image: docker.io/langfuse/langfuse-worker:4
+    restart: unless-stopped
+    mem_limit: 2g
+    depends_on: &langfuse-depends-on
+      langfuse-postgres:
+        condition: service_healthy
+      langfuse-minio:
+        condition: service_healthy
+      langfuse-redis:
+        condition: service_healthy
+      langfuse-clickhouse:
+        condition: service_healthy
+    environment: &langfuse-worker-env
+      NEXTAUTH_URL: ${LANGFUSE_NEXTAUTH_URL:-http://localhost:3001}
+      DATABASE_URL: postgresql://langfuse:langfuse@langfuse-postgres:5432/langfuse # CHANGEME
+      SALT: ${LANGFUSE_SALT:-emsclaw-langfuse-salt-2026} # CHANGEME
+      ENCRYPTION_KEY: ${LANGFUSE_ENCRYPTION_KEY:-a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f90} # CHANGEME: 64 hex chars
+      TELEMETRY_ENABLED: ${LANGFUSE_TELEMETRY_ENABLED:-false}
+      LANGFUSE_ENABLE_EXPERIMENTAL_FEATURES: ${LANGFUSE_ENABLE_EXPERIMENTAL_FEATURES:-false}
+      CLICKHOUSE_MIGRATION_URL: clickhouse://langfuse-clickhouse:9000
+      CLICKHOUSE_URL: http://langfuse-clickhouse:8123
+      CLICKHOUSE_USER: ${LANGFUSE_CLICKHOUSE_USER:-clickhouse}
+      CLICKHOUSE_PASSWORD: ${LANGFUSE_CLICKHOUSE_PASSWORD:-clickhouse} # CHANGEME
+      CLICKHOUSE_CLUSTER_ENABLED: "false"
+      LANGFUSE_USE_AZURE_BLOB: "false"
+      LANGFUSE_USE_OCI_NATIVE_OBJECT_STORAGE: "false"
+      LANGFUSE_S3_EVENT_UPLOAD_BUCKET: langfuse
+      LANGFUSE_S3_EVENT_UPLOAD_REGION: auto
+      LANGFUSE_S3_EVENT_UPLOAD_ACCESS_KEY_ID: ${LANGFUSE_MINIO_ROOT_USER:-minio}
+      LANGFUSE_S3_EVENT_UPLOAD_SECRET_ACCESS_KEY: ${LANGFUSE_MINIO_ROOT_PASSWORD:-miniosecret} # CHANGEME
+      LANGFUSE_S3_EVENT_UPLOAD_ENDPOINT: http://langfuse-minio:9000
+      LANGFUSE_S3_EVENT_UPLOAD_FORCE_PATH_STYLE: "true"
+      LANGFUSE_S3_EVENT_UPLOAD_PREFIX: events/
+      LANGFUSE_S3_MEDIA_UPLOAD_BUCKET: langfuse
+      LANGFUSE_S3_MEDIA_UPLOAD_REGION: auto
+      LANGFUSE_S3_MEDIA_UPLOAD_ACCESS_KEY_ID: ${LANGFUSE_MINIO_ROOT_USER:-minio}
+      LANGFUSE_S3_MEDIA_UPLOAD_SECRET_ACCESS_KEY: ${LANGFUSE_MINIO_ROOT_PASSWORD:-miniosecret} # CHANGEME
+      LANGFUSE_S3_MEDIA_UPLOAD_ENDPOINT: http://langfuse-minio:9000
+      LANGFUSE_S3_MEDIA_UPLOAD_FORCE_PATH_STYLE: "true"
+      LANGFUSE_S3_MEDIA_UPLOAD_PREFIX: media/
+      LANGFUSE_OBSERVATION_FIELD_OVERFLOW_ENABLED: "false"
+      LANGFUSE_OBSERVATION_FIELD_SIZE_LIMIT_BYTES: "2097152"
+      LANGFUSE_S3_BATCH_EXPORT_ENABLED: "false"
+      LANGFUSE_S3_BATCH_EXPORT_BUCKET: langfuse
+      LANGFUSE_S3_BATCH_EXPORT_PREFIX: exports/
+      LANGFUSE_S3_BATCH_EXPORT_REGION: auto
+      LANGFUSE_S3_BATCH_EXPORT_ENDPOINT: http://langfuse-minio:9000
+      LANGFUSE_S3_BATCH_EXPORT_EXTERNAL_ENDPOINT: http://localhost:9090
+      LANGFUSE_S3_BATCH_EXPORT_ACCESS_KEY_ID: ${LANGFUSE_MINIO_ROOT_USER:-minio}
+      LANGFUSE_S3_BATCH_EXPORT_SECRET_ACCESS_KEY: ${LANGFUSE_MINIO_ROOT_PASSWORD:-miniosecret} # CHANGEME
+      LANGFUSE_S3_BATCH_EXPORT_FORCE_PATH_STYLE: "true"
+      REDIS_HOST: langfuse-redis
+      REDIS_PORT: 6379
+      REDIS_AUTH: ${LANGFUSE_REDIS_AUTH:-myredissecret} # CHANGEME
+      LANGFUSE_BULLMQ_SKIP_REDIS_VERSION_CHECK: "true"
+      REDIS_TLS_ENABLED: "false"
+      EMAIL_FROM_ADDRESS: ""
+      SMTP_CONNECTION_URL: ""
+      TZ: Asia/Shanghai
+
+  langfuse-web:
+    image: docker.io/langfuse/langfuse:4
+    restart: unless-stopped
+    mem_limit: 3g
+    depends_on: *langfuse-depends-on
+    ports:
+      - "3001:3000"
+    environment:
+      <<: *langfuse-worker-env
+      NEXTAUTH_SECRET: ${LANGFUSE_NEXTAUTH_SECRET:-emsclaw-langfuse-nextauth-secret-2026} # CHANGEME
+      # 浏览器直传多媒体到 minio 时用外部可达地址（宿主机 9090 -> minio 9000）
+      LANGFUSE_S3_MEDIA_UPLOAD_ENDPOINT: http://localhost:9090
+      # ── headless 初始化：首次启动自动建 org/project/user/API Key ──
+      LANGFUSE_INIT_ORG_ID: emsclaw
+      LANGFUSE_INIT_ORG_NAME: emsclaw
+      LANGFUSE_INIT_PROJECT_ID: emsclaw-default
+      LANGFUSE_INIT_PROJECT_NAME: emsclaw-default
+      # 与 backend 使用的 LANGFUSE_PUBLIC_KEY/SECRET_KEY 必须一致
+      LANGFUSE_INIT_PROJECT_PUBLIC_KEY: ${LANGFUSE_PUBLIC_KEY}
+      LANGFUSE_INIT_PROJECT_SECRET_KEY: ${LANGFUSE_SECRET_KEY}
+      LANGFUSE_INIT_USER_EMAIL: ${LANGFUSE_INIT_USER_EMAIL:-admin@emsclaw.local}
+      LANGFUSE_INIT_USER_NAME: ${LANGFUSE_INIT_USER_NAME:-admin}
+      LANGFUSE_INIT_USER_PASSWORD: ${LANGFUSE_INIT_USER_PASSWORD:-admin123} # CHANGEME
+    healthcheck:
+      # langfuse-web(Next.js standalone)绑定到容器 HOSTNAME(eth0 IP),非 127.0.0.1,
+      # 故用 os.hostname() 解析到实际监听地址探测。
+      test: ["CMD-SHELL", "node -e \"const h=require('http'),o=require('os');h.get('http://'+o.hostname()+':3000/api/public/health',r=>process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))\""]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 60s
+
+  # ─────────────────────────────────────────────────────────────
+  # Langfuse 专属基础设施（与主栈隔离）
+  # ─────────────────────────────────────────────────────────────
+  langfuse-postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    mem_limit: 512m
+    environment:
+      POSTGRES_USER: langfuse
+      POSTGRES_PASSWORD: langfuse # CHANGEME
+      POSTGRES_DB: langfuse
+      TZ: Asia/Shanghai
+    volumes:
+      - langfuse_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U langfuse -d langfuse"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  langfuse-redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    mem_limit: 256m
+    command: >
+      --requirepass ${LANGFUSE_REDIS_AUTH:-myredissecret}
+      --maxmemory-policy noeviction
+    volumes:
+      - langfuse_redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 5s
+      retries: 10
+
+  langfuse-clickhouse:
+    image: clickhouse/clickhouse-server:25.12
+    restart: unless-stopped
+    user: "101:101"
+    mem_limit: 2g
+    environment:
+      CLICKHOUSE_DB: default
+      CLICKHOUSE_USER: ${LANGFUSE_CLICKHOUSE_USER:-clickhouse}
+      CLICKHOUSE_PASSWORD: ${LANGFUSE_CLICKHOUSE_PASSWORD:-clickhouse} # CHANGEME
+    volumes:
+      - langfuse_clickhouse_data:/var/lib/clickhouse
+      - langfuse_clickhouse_logs:/var/log/clickhouse-server
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:8123/ping || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
+
+  langfuse-minio:
+    image: cgr.dev/chainguard/minio
+    restart: unless-stopped
+    mem_limit: 512m
+    entrypoint: sh
+    # 启动前创建 langfuse bucket
+    command: -c 'mkdir -p /data/langfuse && minio server --address ":9000" --console-address ":9001" /data'
+    environment:
+      MINIO_ROOT_USER: ${LANGFUSE_MINIO_ROOT_USER:-minio}
+      MINIO_ROOT_PASSWORD: ${LANGFUSE_MINIO_ROOT_PASSWORD:-miniosecret} # CHANGEME
+    ports:
+      - "9090:9000"
+    volumes:
+      - langfuse_minio_data:/data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 3s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+volumes:
+  langfuse_postgres_data:
+  langfuse_redis_data:
+  langfuse_clickhouse_data:
+  langfuse_clickhouse_logs:
+  langfuse_minio_data:

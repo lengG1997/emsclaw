@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 980" font-family="Segoe UI, -apple-system, Roboto, sans-serif">
+  <defs>
+    <marker id="ab" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#2563eb"/></marker>
+    <marker id="ao" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#ea580c"/></marker>
+    <marker id="ag" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#6b7280"/></marker>
+    <marker id="ae" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#059669"/></marker>
+    <marker id="ap" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#7c3aed"/></marker>
+  </defs>
+  <rect width="1100" height="980" fill="#ffffff"/>
+  <text x="550" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">审批可视化：ApprovalCard 组件结构</text>
+  <text x="550" y="53" text-anchor="middle" font-size="12" fill="#64748b">action_requests 预览 · review_configs 按钮 · submit 走 SSE resume</text>
+  <text x="60" y="74" font-size="13" font-weight="700" fill="#0f172a">ApprovalCard.vue（会话内 · 待决策态）</text>
+  <rect x="60" y="90" width="460" height="560" rx="12" fill="#fffbeb" stroke="#fcd34d" stroke-width="2"/>
+  <rect x="60" y="90" width="460" height="34" rx="12" fill="#fef3c7"/>
+  <rect x="60" y="110" width="460" height="14" fill="#fef3c7"/>
+  <text x="76" y="112" font-size="13" font-weight="700" fill="#b45309">🛡 审批要求 (Approval Required)</text>
+  <text x="504" y="112" text-anchor="end" font-size="11" fill="#b45309">⟳ Resuming...</text>
+  <text x="76" y="140" font-size="11" font-weight="600" fill="#475569">action_requests[0]</text>
+  <rect x="76" y="148" width="428" height="78" rx="8" fill="#ffffff" stroke="#fde68a"/>
+  <text x="90" y="168" font-size="12" font-weight="700" fill="#0f172a">⚡ terminal_execute</text>
+  <text x="90" y="185" font-size="10" fill="#64748b">在储能柜上执行放电指令</text>
+  <rect x="90" y="190" width="396" height="32" fill="#f8fafc"/>
+  <text x="100" y="210" font-size="9.5" fill="#64748b" font-family="Consolas,monospace">{ "command": "ess discharge --soc 20" }</text>
+  <text x="76" y="240" font-size="11" font-weight="600" fill="#475569">review_configs[0].description</text>
+  <text x="76" y="258" font-size="10.5" fill="#64748b">ℹ 该工具会修改储能运行状态，请人工确认。</text>
+  <text x="76" y="280" font-size="11" font-weight="600" fill="#475569">allowed_decisions → 按钮组（按 review_configs.allowed_decisions 取并集）</text>
+  <rect x="76" y="294" width="92" height="30" rx="6" fill="#10b981"/>
+  <text x="122" y="314" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">✓ Approve</text>
+  <rect x="178" y="294" width="92" height="30" rx="6" fill="#ef4444"/>
+  <text x="224" y="314" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">✕ Reject</text>
+  <rect x="280" y="294" width="82" height="30" rx="6" fill="#3b82f6"/>
+  <text x="321" y="314" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">✎ Edit</text>
+  <rect x="372" y="294" width="92" height="30" rx="6" fill="#3b82f6"/>
+  <text x="418" y="314" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">💬 Respond</text>
+  <rect x="384" y="294" width="120" height="30" rx="6" fill="#fffbeb" stroke="#fcd34d"/>
+  <text x="444" y="314" text-anchor="middle" font-size="11" font-weight="600" fill="#b45309">⚡ Auto-approve all</text>
+  <text x="76" y="342" font-size="9.5" fill="#94a3b8">注：device_management/command_execution 仅注册 approve|reject；edit/respond 由其他领域声明</text>
+  <text x="76" y="372" font-size="11" font-weight="600" fill="#475569">点击决策 → emit(submit, interruptId, decision)</text>
+  <line x1="290" y1="378" x2="290" y2="402" stroke="#2563eb" stroke-width="1.8" marker-end="url(#ab)"/>
+  <rect x="76" y="406" width="428" height="56" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+  <text x="290" y="426" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">agentApi.resumeApproval(sid, iid, {decision})</text>
+  <text x="290" y="444" text-anchor="middle" font-size="10" fill="#1e40af">→ POST /sessions/{id}/approvals/{iid}  (SSE resume 流)</text>
+  <text x="560" y="74" font-size="13" font-weight="700" fill="#0f172a">ApprovalsPage.vue（审批台账 · 跨会话查询）</text>
+  <rect x="560" y="90" width="500" height="360" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="576" y="114" font-size="11" font-weight="600" fill="#475569">筛选 status:</text>
+  <rect x="650" y="102" width="84" height="22" rx="11" fill="#f59e0b" opacity="0.15" stroke="#f59e0b"/>
+  <text x="692" y="117" text-anchor="middle" font-size="9.5" fill="#f59e0b">pending</text>
+  <rect x="742" y="102" width="84" height="22" rx="11" fill="#10b981" opacity="0.15" stroke="#10b981"/>
+  <text x="784" y="117" text-anchor="middle" font-size="9.5" fill="#10b981">decided</text>
+  <rect x="834" y="102" width="84" height="22" rx="11" fill="#6366f1" opacity="0.15" stroke="#6366f1"/>
+  <text x="876" y="117" text-anchor="middle" font-size="9.5" fill="#6366f1">auto_approved</text>
+  <rect x="570" y="136" width="480" height="26" fill="#e2e8f0"/>
+  <text x="580" y="153" font-size="10" font-weight="700" fill="#475569">工具</text>
+  <text x="676" y="153" font-size="10" font-weight="700" fill="#475569">子Agent</text>
+  <text x="772" y="153" font-size="10" font-weight="700" fill="#475569">状态</text>
+  <text x="868" y="153" font-size="10" font-weight="700" fill="#475569">决策</text>
+  <text x="964" y="153" font-size="10" font-weight="700" fill="#475569">approver</text>
+  <rect x="570" y="162" width="480" height="40" fill="#ffffff"/>
+  <text x="580" y="186" font-size="10" fill="#0f172a">create_device</text>
+  <text x="676" y="186" font-size="10" fill="#64748b">device_management</text>
+  <rect x="772" y="173" width="52" height="18" rx="9" fill="#f59e0b" opacity="0.15"/>
+  <text x="798" y="186" text-anchor="middle" font-size="9" fill="#f59e0b">pending</text>
+  <text x="868" y="186" font-size="10" fill="#475569">—</text>
+  <rect x="570" y="202" width="480" height="40" fill="#f1f5f9"/>
+  <text x="580" y="226" font-size="10" fill="#0f172a">configure_network</text>
+  <text x="676" y="226" font-size="10" fill="#64748b">device_management</text>
+  <rect x="772" y="213" width="52" height="18" rx="9" fill="#6366f1" opacity="0.15"/>
+  <text x="798" y="226" text-anchor="middle" font-size="9" fill="#6366f1">auto</text>
+  <text x="868" y="226" font-size="10" fill="#475569">system</text>
+  <rect x="570" y="242" width="480" height="40" fill="#ffffff"/>
+  <text x="580" y="266" font-size="10" fill="#0f172a">terminal_execute</text>
+  <text x="676" y="266" font-size="10" fill="#64748b">command_exec</text>
+  <rect x="772" y="253" width="52" height="18" rx="9" fill="#10b981" opacity="0.15"/>
+  <text x="798" y="266" text-anchor="middle" font-size="9" fill="#10b981">approve</text>
+  <text x="868" y="266" font-size="10" fill="#475569">admin</text>
+  <rect x="570" y="282" width="480" height="40" fill="#f1f5f9"/>
+  <text x="580" y="306" font-size="10" fill="#0f172a">discharge_cmd</text>
+  <text x="676" y="306" font-size="10" fill="#64748b">energy_storage</text>
+  <rect x="772" y="293" width="52" height="18" rx="9" fill="#10b981" opacity="0.15"/>
+  <text x="798" y="306" text-anchor="middle" font-size="9" fill="#10b981">approve</text>
+  <text x="868" y="306" font-size="10" fill="#475569">ops</text>
+  <text x="576" y="420" font-size="9.5" fill="#64748b">字段：interrupt_id / tool_name / tool_args / tool_result / subagent_type / approver_user_id</text>
+  <text x="576" y="434" font-size="9.5" fill="#64748b">API：GET /approvals（分页 + status/initiator/session_id 筛选）</text>
+  <text x="560" y="474" font-size="13" font-weight="700" fill="#0f172a">ApprovalRecord 状态流转</text>
+  <rect x="540" y="492" width="120" height="36" rx="18" fill="#f59e0b" opacity="0.15" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="600" y="514" text-anchor="middle" font-size="11" font-weight="700" fill="#f59e0b">pending</text>
+  <rect x="710" y="492" width="120" height="36" rx="18" fill="#10b981" opacity="0.15" stroke="#10b981" stroke-width="1.5"/>
+  <text x="770" y="514" text-anchor="middle" font-size="11" font-weight="700" fill="#10b981">decided</text>
+  <rect x="880" y="492" width="120" height="36" rx="18" fill="#6366f1" opacity="0.15" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="940" y="514" text-anchor="middle" font-size="11" font-weight="700" fill="#6366f1">auto_approved</text>
+  <line x1="660" y1="510" x2="710" y2="510" stroke="#10b981" stroke-width="1.8" marker-end="url(#ae)"/>
+  <text x="685" y="502" text-anchor="middle" font-size="9" fill="#10b981">手动 resume</text>
+  <path d="M 660,510 L 660,576 L 880,576 L 880,510" fill="none" stroke="#6366f1" stroke-width="1.8" stroke-dasharray="4,2" marker-end="url(#ap)"/>
+  <text x="770" y="568" text-anchor="middle" font-size="9" fill="#6366f1">auto_approve</text>
+  <rect x="60" y="610" width="1000" height="50" rx="8" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="80" y="630" font-size="11" font-weight="700" fill="#9a3412">联动</text>
+  <text x="80" y="646" font-size="10.5" fill="#9a3412">ApprovalCard submit → resumeApproval SSE → 后端 resume_session → Command(resume) → 工具执行 → tool_result 回填 ApprovalRecord → ApprovalsPage 台账实时更新状态</text>
+</svg>

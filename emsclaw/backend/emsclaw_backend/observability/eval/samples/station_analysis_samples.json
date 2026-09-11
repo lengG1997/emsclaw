@@ -1,0 +1,170 @@
+[
+  {
+    "input": {"query": "场站怎么样,给个总览"},
+    "expectedOutput": {
+      "expected_subagent": "EmsStationExpert",
+      "expected_tools": ["get_station_snapshot"],
+      "forbidden_tools": ["write_file", "execute"],
+      "max_tool_calls": 14,
+      "max_repeat_ratio": 0.3,
+      "quality_rubric": "回答应含:一句话总结、装机规模、储能/光伏/关口表/需量关键数字、异常或运行正常、四方向策略方向指引"
+    },
+    "metadata": {"source": "hand-written", "scenario": "场站总览请求", "difficulty": "easy"}
+  },
+  {
+    "input": {"query": "看看这个站现在什么情况"},
+    "expectedOutput": {
+      "expected_subagent": "EmsStationExpert",
+      "expected_tools": ["get_station_snapshot"],
+      "forbidden_tools": ["write_file", "execute"],
+      "max_tool_calls": 14,
+      "max_repeat_ratio": 0.3,
+      "quality_rubric": "通俗化报告,含运行现状、异常、策略方向"
+    },
+    "metadata": {"source": "hand-written", "scenario": "场站情况变体", "difficulty": "easy"}
+  },
+  {
+    "input": {"query": "帮我做削峰填谷策略,要带时段和收益"},
+    "expectedOutput": {
+      "expected_subagent": "EmsStationExpert",
+      "expected_tools": ["analyze_peak_shaving_strategy"],
+      "forbidden_tools": ["write_file", "execute"],
+      "max_tool_calls": 12,
+      "max_repeat_ratio": 0.3,
+      "quality_rubric": "带数据时段收益,覆盖充放电窗口"
+    },
+    "metadata": {"source": "hand-written", "scenario": "削峰填谷策略", "difficulty": "medium"}
+  },
+  {
+    "input": {"query": "需量超申报了,怎么控制"},
+    "expectedOutput": {
+      "expected_subagent": "EmsStationExpert",
+      "expected_tools": ["analyze_demand_control_strategy"],
+      "forbidden_tools": ["write_file", "execute"],
+      "max_tool_calls": 12,
+      "max_repeat_ratio": 0.3,
+      "quality_rubric": "含当前需量、申报值、超限百分比、削峰时段与预计罚款节省"
+    },
+    "metadata": {"source": "hand-written", "scenario": "需量控制", "difficulty": "medium"}
+  },
+  {
+    "input": {"query": "白天光伏过剩逆流告警怎么办"},
+    "expectedOutput": {
+      "expected_subagent": "EmsStationExpert",
+      "expected_tools": ["analyze_anti_reverse_strategy"],
+      "forbidden_tools": ["write_file", "execute"],
+      "max_tool_calls": 12,
+      "max_repeat_ratio": 0.3,
+      "quality_rubric": "含逆流次数、防逆流阈值、充电吸收时段与预计效果"
+    },
+    "metadata": {"source": "hand-written", "scenario": "防逆流", "difficulty": "medium"}
+  },
+  {
+    "input": {"query": "电池保护策略怎么做,SOC 温度这些"},
+    "expectedOutput": {
+      "expected_subagent": "EmsStationExpert",
+      "expected_tools": ["analyze_protection_strategy"],
+      "forbidden_tools": ["write_file", "execute"],
+      "max_tool_calls": 12,
+      "max_repeat_ratio": 0.3,
+      "quality_rubric": "含各 PCS SOC 限值、温度、SOH、保护定值建议"
+    },
+    "metadata": {"source": "hand-written", "scenario": "保护策略", "difficulty": "medium"}
+  },
+  {
+    "input": {"query": "现在是什么电价时段,平段还是峰段"},
+    "expectedOutput": {
+      "expected_subagent": "PowerMarketExpert",
+      "expected_tools": [],
+      "forbidden_tools": ["write_file", "execute", "get_station_snapshot"],
+      "max_tool_calls": 6,
+      "max_repeat_ratio": 0.3,
+      "quality_rubric": "明确当前电价时段与单价,不该派场站分析子 agent"
+    },
+    "metadata": {"source": "hand-written", "scenario": "电价咨询(误派场站是失败)", "difficulty": "medium"}
+  },
+  {
+    "input": {"query": "近一周电池 SOC 历史趋势怎么样"},
+    "expectedOutput": {
+      "expected_subagent": "EmsStationExpert",
+      "expected_tools": ["get_storage_history"],
+      "forbidden_tools": ["write_file", "execute"],
+      "max_tool_calls": 10,
+      "max_repeat_ratio": 0.3,
+      "quality_rubric": "含历史 SOC 数据点与趋势解读"
+    },
+    "metadata": {"source": "hand-written", "scenario": "历史趋势追问", "difficulty": "medium"}
+  },
+  {
+    "input": {"query": "今天储能充放电收益多少,套利空间还有多大"},
+    "expectedOutput": {
+      "expected_subagent": "EnergyStorageExpert",
+      "expected_tools": [],
+      "forbidden_tools": ["write_file", "execute"],
+      "max_tool_calls": 8,
+      "max_repeat_ratio": 0.3,
+      "quality_rubric": "含今日充放电电量、收益、价差与套利窗口预测"
+    },
+    "metadata": {"source": "hand-written", "scenario": "储能本体套利(派 EnergyStorage 不是场站)", "difficulty": "medium"}
+  },
+  {
+    "input": {"query": "新增一台 PCS 设备,做下配网"},
+    "expectedOutput": {
+      "expected_subagent": "DeviceManagementExpert",
+      "expected_tools": [],
+      "forbidden_tools": ["write_file", "execute", "get_station_snapshot"],
+      "max_tool_calls": 8,
+      "max_repeat_ratio": 0.3,
+      "quality_rubric": "触发设备录入流程,不该派场站分析"
+    },
+    "metadata": {"source": "hand-written", "scenario": "设备录入(派 DeviceManagement)", "difficulty": "medium"}
+  },
+  {
+    "input": {"query": "把储能切换到充电模式,功率 200kW"},
+    "expectedOutput": {
+      "expected_subagent": "CommandExecutionExpert",
+      "expected_tools": [],
+      "forbidden_tools": ["write_file", "execute"],
+      "max_tool_calls": 8,
+      "max_repeat_ratio": 0.3,
+      "quality_rubric": "触发控制指令流程(可能 HITL 审批),不该派场站分析"
+    },
+    "metadata": {"source": "hand-written", "scenario": "控制指令(派 CommandExecution)", "difficulty": "medium"}
+  },
+  {
+    "input": {"query": "搜一下最新山东省电力市场政策"},
+    "expectedOutput": {
+      "expected_subagent": "PowerSearchExpert",
+      "expected_tools": [],
+      "forbidden_tools": ["write_file", "execute", "get_station_snapshot"],
+      "max_tool_calls": 8,
+      "max_repeat_ratio": 0.3,
+      "quality_rubric": "外部检索,不该派场站分析"
+    },
+    "metadata": {"source": "hand-written", "scenario": "外部检索(派 PowerSearch)", "difficulty": "medium"}
+  },
+  {
+    "input": {"query": "帮我做个最优充放电轨迹的调度优化"},
+    "expectedOutput": {
+      "expected_subagent": "PyPSAModelingExpert",
+      "expected_tools": [],
+      "forbidden_tools": ["write_file", "execute"],
+      "max_tool_calls": 8,
+      "max_repeat_ratio": 0.3,
+      "quality_rubric": "派精确建模,不该派场站分析"
+    },
+    "metadata": {"source": "hand-written", "scenario": "精确建模(派 PyPSA)", "difficulty": "hard"}
+  },
+  {
+    "input": {"query": "帮我写一段 Python 代码算斐波那契数列"},
+    "expectedOutput": {
+      "expected_subagent": null,
+      "expected_tools": [],
+      "forbidden_tools": ["write_file", "execute", "get_station_snapshot"],
+      "max_tool_calls": 3,
+      "max_repeat_ratio": 0.3,
+      "quality_rubric": "非 EMS 范围,Lead 应直接拒答,不该派任何子 agent 也不该自己绕沙箱试错"
+    },
+    "metadata": {"source": "hand-written", "scenario": "非 EMS 范围拒答", "difficulty": "medium"}
+  }
+]

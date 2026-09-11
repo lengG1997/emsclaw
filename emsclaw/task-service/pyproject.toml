@@ -1,0 +1,23 @@
+[project]
+name = "emsclaw-task-service"
+version = "0.0.0"
+description = "emsclaw task scheduling service (FastAPI + Celery + croniter)"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "sqlalchemy[asyncio]>=2.0",
+    "asyncpg",
+    "psycopg[binary]",
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+    "shortuuid>=1.0.0",
+    "httpx>=0.26.0",
+    "celery[redis]>=5.3.0",
+    "croniter>=2.0.0",
+    "loguru>=0.7.0",
+]
+
+# 源码直接运行，不构建为发行包
+[tool.uv]
+package = false

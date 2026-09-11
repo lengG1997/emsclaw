@@ -1,0 +1,3528 @@
+{
+ "generated_at": "2026-09-11 16:57:45",
+ "ok_wall_min_s": 25.0,
+ "truth_source": {
+  "max_rolling_demand_kw": 1524.5,
+  "max_load_kw": 1585.4,
+  "max_import_kw": 1578.3,
+  "daily_max_load_kw": {
+   "2026-09-10": 1585.4,
+   "2026-09-11": 1356.7
+  },
+  "contract_demand_kw": 1250.0
+ },
+ "truth_verify": [
+  {
+   "model_id": "sys-dashscope-qwen3.5-122b-a10b",
+   "card": "demand_cap",
+   "score": 0,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": false,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-122b-a10b",
+   "card": "production_priority",
+   "score": 0,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": false,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-27b",
+   "card": "demand_cap",
+   "score": 0,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": false,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-27b",
+   "card": "production_priority",
+   "score": 0,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": false,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-35b-a3b",
+   "card": "demand_cap",
+   "score": 0,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": false,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-35b-a3b",
+   "card": "production_priority",
+   "score": 0,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": false,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-397b-a17b",
+   "card": "demand_cap",
+   "score": 0,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": false,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-397b-a17b",
+   "card": "production_priority",
+   "score": 0,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": false,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-flash",
+   "card": "demand_cap",
+   "score": 0,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": false,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-flash",
+   "card": "production_priority",
+   "score": 0,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": false,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-flash-2026-02-23",
+   "card": "demand_cap",
+   "score": 0,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": false,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-flash-2026-02-23",
+   "card": "production_priority",
+   "score": 0,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": false,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-plus",
+   "card": "demand_cap",
+   "score": 2,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": true,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-plus",
+   "card": "production_priority",
+   "score": 1,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-plus-2026-02-15",
+   "card": "demand_cap",
+   "score": 0,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": false,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-plus-2026-02-15",
+   "card": "production_priority",
+   "score": 0,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": false,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-plus-2026-04-20",
+   "card": "demand_cap",
+   "score": 2,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": true,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-plus-2026-04-20",
+   "card": "production_priority",
+   "score": 0,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": false,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-27b",
+   "card": "demand_cap",
+   "score": 2,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": true,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-27b",
+   "card": "production_priority",
+   "score": 1,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-35b-a3b",
+   "card": "demand_cap",
+   "score": 2,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": true,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-35b-a3b",
+   "card": "production_priority",
+   "score": 1,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-flash",
+   "card": "demand_cap",
+   "score": 2,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": true,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-flash",
+   "card": "production_priority",
+   "score": 1,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-flash-2026-04-16",
+   "card": "demand_cap",
+   "score": 2,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": true,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-flash-2026-04-16",
+   "card": "production_priority",
+   "score": 2,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": true,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-max-preview",
+   "card": "demand_cap",
+   "score": 1,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-max-preview",
+   "card": "production_priority",
+   "score": 1,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-plus",
+   "card": "demand_cap",
+   "score": 2,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": true,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-plus",
+   "card": "production_priority",
+   "score": 1,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-plus-2026-04-02",
+   "card": "demand_cap",
+   "score": 2,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": true,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-plus-2026-04-02",
+   "card": "production_priority",
+   "score": 2,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": true,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "system-default",
+   "card": "demand_cap",
+   "score": 2,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": true,
+    "max_load_kw": false
+   }
+  },
+  {
+   "model_id": "system-default",
+   "card": "production_priority",
+   "score": 1,
+   "total": 3,
+   "detail": {
+    "contract_demand_kw": true,
+    "max_rolling_demand_kw": false,
+    "max_load_kw": false
+   }
+  }
+ ],
+ "cross_check": {
+  "demand_cap": {
+   "n_runs": 17,
+   "constants": [
+    1250.0,
+    1303.0,
+    1524.5
+   ],
+   "votes": {
+    "1250.0": 10,
+    "1303.0": 10,
+    "1524.5": 8
+   },
+   "threshold": 7
+  },
+  "production_priority": {
+   "n_runs": 17,
+   "constants": [
+    1250.0,
+    1303.0,
+    1304.0
+   ],
+   "votes": {
+    "1250.0": 9,
+    "1303.0": 7,
+    "1304.0": 8
+   },
+   "threshold": 7
+  }
+ },
+ "per_run": [
+  {
+   "model_id": "sys-dashscope-qwen3.5-122b-a10b",
+   "card": "demand_cap",
+   "ok": false,
+   "wall_s": 4.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": null,
+   "in_tokens": null,
+   "out_tokens": null,
+   "thinking_events": 1,
+   "trace_id": null,
+   "n_tools": 0,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_write": 0,
+   "subagents": [],
+   "n_errors": 1,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-6c3a3f35-716c-9a03-b311-809110a72448', 'request_id': '6c3a3f35-716c-9a03-b311-809110a72448'}"
+   ],
+   "n_approvals": 0,
+   "n_assistant": 0,
+   "final_len": 0,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": false,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": false,
+   "n_metrics": 0,
+   "kw_vals": [],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "score": 4.0,
+   "consensus_hit": 0,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": false
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 0,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-122b-a10b",
+   "card": "production_priority",
+   "ok": false,
+   "wall_s": 4.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": null,
+   "in_tokens": null,
+   "out_tokens": null,
+   "thinking_events": 1,
+   "trace_id": null,
+   "n_tools": 0,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_write": 0,
+   "subagents": [],
+   "n_errors": 1,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-29d13994-201b-9fb1-b2f9-dc27cd9554b3', 'request_id': '29d13994-201b-9fb1-b2f9-dc27cd9554b3'}"
+   ],
+   "n_approvals": 0,
+   "n_assistant": 0,
+   "final_len": 0,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": false,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": false,
+   "n_metrics": 0,
+   "kw_vals": [],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "score": 4.0,
+   "consensus_hit": 0,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": false
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 0,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-27b",
+   "card": "demand_cap",
+   "ok": false,
+   "wall_s": 5.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": null,
+   "in_tokens": null,
+   "out_tokens": null,
+   "thinking_events": 1,
+   "trace_id": null,
+   "n_tools": 0,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_write": 0,
+   "subagents": [],
+   "n_errors": 1,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-5ba8165c-2eb3-95eb-a7b3-3e39cb36afcd', 'request_id': '5ba8165c-2eb3-95eb-a7b3-3e39cb36afcd'}"
+   ],
+   "n_approvals": 0,
+   "n_assistant": 0,
+   "final_len": 0,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": false,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": false,
+   "n_metrics": 0,
+   "kw_vals": [],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "score": 4.0,
+   "consensus_hit": 0,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": false
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 0,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-27b",
+   "card": "production_priority",
+   "ok": false,
+   "wall_s": 5.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": null,
+   "in_tokens": null,
+   "out_tokens": null,
+   "thinking_events": 1,
+   "trace_id": null,
+   "n_tools": 0,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_write": 0,
+   "subagents": [],
+   "n_errors": 1,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-3b8ae95a-4eac-9243-b6df-30c6c4d68631', 'request_id': '3b8ae95a-4eac-9243-b6df-30c6c4d68631'}"
+   ],
+   "n_approvals": 0,
+   "n_assistant": 0,
+   "final_len": 0,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": false,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": false,
+   "n_metrics": 0,
+   "kw_vals": [],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "score": 4.0,
+   "consensus_hit": 0,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": false
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 0,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-35b-a3b",
+   "card": "demand_cap",
+   "ok": false,
+   "wall_s": 4.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": null,
+   "in_tokens": null,
+   "out_tokens": null,
+   "thinking_events": 1,
+   "trace_id": null,
+   "n_tools": 0,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_write": 0,
+   "subagents": [],
+   "n_errors": 1,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-3c219876-ef6a-9945-9459-2c0849e22f8c', 'request_id': '3c219876-ef6a-9945-9459-2c0849e22f8c'}"
+   ],
+   "n_approvals": 0,
+   "n_assistant": 0,
+   "final_len": 0,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": false,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": false,
+   "n_metrics": 0,
+   "kw_vals": [],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "score": 4.0,
+   "consensus_hit": 0,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": false
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 0,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-35b-a3b",
+   "card": "production_priority",
+   "ok": false,
+   "wall_s": 3.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": null,
+   "in_tokens": null,
+   "out_tokens": null,
+   "thinking_events": 1,
+   "trace_id": null,
+   "n_tools": 0,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_write": 0,
+   "subagents": [],
+   "n_errors": 1,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-338813d8-3a92-9ffb-add6-0c9d14021e72', 'request_id': '338813d8-3a92-9ffb-add6-0c9d14021e72'}"
+   ],
+   "n_approvals": 0,
+   "n_assistant": 0,
+   "final_len": 0,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": false,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": false,
+   "n_metrics": 0,
+   "kw_vals": [],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "score": 4.0,
+   "consensus_hit": 0,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": false
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 0,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-397b-a17b",
+   "card": "demand_cap",
+   "ok": false,
+   "wall_s": 6.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": null,
+   "in_tokens": null,
+   "out_tokens": null,
+   "thinking_events": 1,
+   "trace_id": null,
+   "n_tools": 0,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_write": 0,
+   "subagents": [],
+   "n_errors": 1,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-8a5f7c9e-c3c6-9988-9a43-be5dec563953', 'request_id': '8a5f7c9e-c3c6-9988-9a43-be5dec563953'}"
+   ],
+   "n_approvals": 0,
+   "n_assistant": 0,
+   "final_len": 0,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": false,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": false,
+   "n_metrics": 0,
+   "kw_vals": [],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "score": 4.0,
+   "consensus_hit": 0,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": false
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 0,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-397b-a17b",
+   "card": "production_priority",
+   "ok": false,
+   "wall_s": 4.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": null,
+   "in_tokens": null,
+   "out_tokens": null,
+   "thinking_events": 1,
+   "trace_id": null,
+   "n_tools": 0,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_write": 0,
+   "subagents": [],
+   "n_errors": 1,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-1c1e76a5-589d-9e74-9ab9-f6328aab6a2d', 'request_id': '1c1e76a5-589d-9e74-9ab9-f6328aab6a2d'}"
+   ],
+   "n_approvals": 0,
+   "n_assistant": 0,
+   "final_len": 0,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": false,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": false,
+   "n_metrics": 0,
+   "kw_vals": [],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "score": 4.0,
+   "consensus_hit": 0,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": false
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 0,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-flash-2026-02-23",
+   "card": "demand_cap",
+   "ok": false,
+   "wall_s": 4.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": null,
+   "in_tokens": null,
+   "out_tokens": null,
+   "thinking_events": 1,
+   "trace_id": null,
+   "n_tools": 0,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_write": 0,
+   "subagents": [],
+   "n_errors": 1,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-58b05127-cf06-922d-939a-c86128b90688', 'request_id': '58b05127-cf06-922d-939a-c86128b90688'}"
+   ],
+   "n_approvals": 0,
+   "n_assistant": 0,
+   "final_len": 0,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": false,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": false,
+   "n_metrics": 0,
+   "kw_vals": [],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "score": 4.0,
+   "consensus_hit": 0,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": false
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 0,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-flash-2026-02-23",
+   "card": "production_priority",
+   "ok": false,
+   "wall_s": 4.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": null,
+   "in_tokens": null,
+   "out_tokens": null,
+   "thinking_events": 1,
+   "trace_id": null,
+   "n_tools": 0,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_write": 0,
+   "subagents": [],
+   "n_errors": 1,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-c56daeec-183d-948b-b289-5e44e0bb3cb2', 'request_id': 'c56daeec-183d-948b-b289-5e44e0bb3cb2'}"
+   ],
+   "n_approvals": 0,
+   "n_assistant": 0,
+   "final_len": 0,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": false,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": false,
+   "n_metrics": 0,
+   "kw_vals": [],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "score": 4.0,
+   "consensus_hit": 0,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": false
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 0,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-flash",
+   "card": "demand_cap",
+   "ok": false,
+   "wall_s": 4.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": null,
+   "in_tokens": null,
+   "out_tokens": null,
+   "thinking_events": 1,
+   "trace_id": null,
+   "n_tools": 0,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_write": 0,
+   "subagents": [],
+   "n_errors": 1,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-2e514234-30bc-93ad-9964-963e42508284', 'request_id': '2e514234-30bc-93ad-9964-963e42508284'}"
+   ],
+   "n_approvals": 0,
+   "n_assistant": 0,
+   "final_len": 0,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": false,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": false,
+   "n_metrics": 0,
+   "kw_vals": [],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "score": 4.0,
+   "consensus_hit": 0,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": false
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 0,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-flash",
+   "card": "production_priority",
+   "ok": false,
+   "wall_s": 5.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": null,
+   "in_tokens": null,
+   "out_tokens": null,
+   "thinking_events": 1,
+   "trace_id": null,
+   "n_tools": 0,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_write": 0,
+   "subagents": [],
+   "n_errors": 1,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-42efcee7-5609-9851-89e9-fff1362233f9', 'request_id': '42efcee7-5609-9851-89e9-fff1362233f9'}"
+   ],
+   "n_approvals": 0,
+   "n_assistant": 0,
+   "final_len": 0,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": false,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": false,
+   "n_metrics": 0,
+   "kw_vals": [],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "score": 4.0,
+   "consensus_hit": 0,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": false
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 0,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-plus-2026-02-15",
+   "card": "demand_cap",
+   "ok": false,
+   "wall_s": 5.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": null,
+   "in_tokens": null,
+   "out_tokens": null,
+   "thinking_events": 1,
+   "trace_id": null,
+   "n_tools": 0,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_write": 0,
+   "subagents": [],
+   "n_errors": 1,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-ccba4ee9-ac7c-97d6-bdc9-f74d4134d74e', 'request_id': 'ccba4ee9-ac7c-97d6-bdc9-f74d4134d74e'}"
+   ],
+   "n_approvals": 0,
+   "n_assistant": 0,
+   "final_len": 0,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": false,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": false,
+   "n_metrics": 0,
+   "kw_vals": [],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "score": 4.0,
+   "consensus_hit": 0,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": false
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 0,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-plus-2026-02-15",
+   "card": "production_priority",
+   "ok": false,
+   "wall_s": 4.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": null,
+   "in_tokens": null,
+   "out_tokens": null,
+   "thinking_events": 1,
+   "trace_id": null,
+   "n_tools": 0,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_write": 0,
+   "subagents": [],
+   "n_errors": 1,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-209e96d1-2467-9118-83cb-fafbb4f987fd', 'request_id': '209e96d1-2467-9118-83cb-fafbb4f987fd'}"
+   ],
+   "n_approvals": 0,
+   "n_assistant": 0,
+   "final_len": 0,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": false,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": false,
+   "n_metrics": 0,
+   "kw_vals": [],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "score": 4.0,
+   "consensus_hit": 0,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": false
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 0,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-plus-2026-04-20",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 170.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 166998,
+   "in_tokens": 159975,
+   "out_tokens": 7023,
+   "thinking_events": 939,
+   "trace_id": "ea57e2da158d8e67c3a409c552a825bc",
+   "n_tools": 8,
+   "n_optimize": 4,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 2,
+   "final_len": 719,
+   "n_plans": 2,
+   "plan_labels": [
+    "需量压到最低可行",
+    "省钱优先"
+   ],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": true,
+   "continuity": false,
+   "n_metrics": 12,
+   "kw_vals": [
+    1250.0,
+    1303.0,
+    1524.5,
+    1635.0,
+    1730.0
+   ],
+   "baseline_peak_kw": 1736.5,
+   "peak_demand_kw": 1634.9,
+   "charge_kwh": 2909.9,
+   "discharge_kwh": 2618.9,
+   "has_dispatch_preview": true,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 10.81,
+    "D": 10.5
+   },
+   "score": 86.31,
+   "consensus_hit": 3,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": true
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 2,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-plus-2026-04-20",
+   "card": "production_priority",
+   "ok": false,
+   "wall_s": 82.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": null,
+   "in_tokens": null,
+   "out_tokens": null,
+   "thinking_events": 349,
+   "trace_id": null,
+   "n_tools": 5,
+   "n_optimize": 3,
+   "n_task": 0,
+   "n_write": 0,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 1,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-ead909f4-ff78-90fd-a595-08384f6cdbe0', 'request_id': 'ead909f4-ff78-90fd-a595-08384f6cdbe0'}"
+   ],
+   "n_approvals": 0,
+   "n_assistant": 0,
+   "final_len": 0,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": false,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": false,
+   "n_metrics": 0,
+   "kw_vals": [],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 0.0,
+    "B": 13.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "score": 17.0,
+   "consensus_hit": 0,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": false
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 0,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-plus",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 119.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 139917,
+   "in_tokens": 133981,
+   "out_tokens": 5936,
+   "thinking_events": 718,
+   "trace_id": "9ad8bacb4de3089512f803c6031a6a63",
+   "n_tools": 8,
+   "n_optimize": 3,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 2,
+   "final_len": 1123,
+   "n_plans": 1,
+   "plan_labels": [
+    "最小可行需量"
+   ],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": true,
+   "continuity": false,
+   "n_metrics": 18,
+   "kw_vals": [
+    53.0,
+    332.0,
+    385.0,
+    1250.0,
+    1302.7,
+    1303.0,
+    1510.0,
+    1524.0,
+    1635.0,
+    1730.3
+   ],
+   "baseline_peak_kw": 1736.5,
+   "peak_demand_kw": 1303.0,
+   "charge_kwh": 1922.5,
+   "discharge_kwh": 1730.3,
+   "has_dispatch_preview": true,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 12.0,
+    "D": 15.0
+   },
+   "score": 92.0,
+   "consensus_hit": 2,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": true
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 2,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-plus",
+   "card": "production_priority",
+   "ok": true,
+   "wall_s": 198.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 265538,
+   "in_tokens": 255376,
+   "out_tokens": 10162,
+   "thinking_events": 935,
+   "trace_id": "e2cf6c89859e31ab2d2b7af391a4741a",
+   "n_tools": 12,
+   "n_optimize": 10,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 2,
+   "final_len": 710,
+   "n_plans": 4,
+   "plan_labels": [
+    "保供中+需量1350",
+    "保供低+需量1350",
+    "保供高+需量1304",
+    "仅压需量1304"
+   ],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": true,
+   "continuity": true,
+   "n_metrics": 14,
+   "kw_vals": [
+    54.0,
+    453.0,
+    1250.0,
+    1303.1,
+    1304.0,
+    1350.0
+   ],
+   "baseline_peak_kw": 1736.5,
+   "peak_demand_kw": 1304.0,
+   "charge_kwh": 1943.9,
+   "discharge_kwh": 1749.5,
+   "has_dispatch_preview": true,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 20.0,
+    "D": 9.02
+   },
+   "score": 94.02,
+   "consensus_hit": 2,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 1,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-27b",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 198.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 288436,
+   "in_tokens": 279774,
+   "out_tokens": 8662,
+   "thinking_events": 1370,
+   "trace_id": "83a73dca74ed625d2b189e5900741e98",
+   "n_tools": 12,
+   "n_optimize": 3,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 2,
+   "final_len": 1172,
+   "n_plans": 1,
+   "plan_labels": [
+    "压需量至极限"
+   ],
+   "has_plan": true,
+   "has_verdict": false,
+   "has_infeasible": false,
+   "continuity": true,
+   "n_metrics": 14,
+   "kw_vals": [
+    53.0,
+    377.0,
+    400.0,
+    433.0,
+    433.5,
+    1000.0,
+    1250.0,
+    1303.0,
+    1350.0,
+    1524.5,
+    1736.5
+   ],
+   "baseline_peak_kw": 1736.5,
+   "peak_demand_kw": 1303.0,
+   "charge_kwh": 1922.5,
+   "discharge_kwh": 1730.3,
+   "has_dispatch_preview": true,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 14.0,
+    "E": 12.0,
+    "D": 9.02
+   },
+   "score": 80.02,
+   "consensus_hit": 3,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": true
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 2,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-27b",
+   "card": "production_priority",
+   "ok": true,
+   "wall_s": 198.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 292641,
+   "in_tokens": 283413,
+   "out_tokens": 9228,
+   "thinking_events": 1616,
+   "trace_id": "220b93a7286e8b9e9254521baa09aa32",
+   "n_tools": 15,
+   "n_optimize": 7,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 2,
+   "final_len": 1554,
+   "n_plans": 2,
+   "plan_labels": [
+    "中档保供+压需量1304",
+    "仅压需量1304"
+   ],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": true,
+   "continuity": true,
+   "n_metrics": 23,
+   "kw_vals": [
+    54.0,
+    85.0,
+    166.0,
+    433.0,
+    1200.0,
+    1250.0,
+    1303.0,
+    1304.0,
+    1510.0,
+    1600.0,
+    1750.0,
+    1944.0
+   ],
+   "baseline_peak_kw": 1736.5,
+   "peak_demand_kw": 1304.0,
+   "charge_kwh": 1943.9,
+   "discharge_kwh": 1749.5,
+   "has_dispatch_preview": true,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 20.0,
+    "D": 9.02
+   },
+   "score": 94.02,
+   "consensus_hit": 3,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 1,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-35b-a3b",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 65.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 184508,
+   "in_tokens": 177326,
+   "out_tokens": 7182,
+   "thinking_events": 918,
+   "trace_id": "d7da77350e739dc4eba79c526d952d3a",
+   "n_tools": 10,
+   "n_optimize": 3,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 2,
+   "final_len": 758,
+   "n_plans": 1,
+   "plan_labels": [
+    "压需量-可调版"
+   ],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": true,
+   "continuity": false,
+   "n_metrics": 10,
+   "kw_vals": [
+    1250.0,
+    1303.0,
+    1350.0,
+    1370.0,
+    1500.0,
+    1524.5
+   ],
+   "baseline_peak_kw": 1736.5,
+   "peak_demand_kw": 1350.0,
+   "charge_kwh": 2045.1,
+   "discharge_kwh": 1840.6,
+   "has_dispatch_preview": true,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 10.7,
+    "D": 15.0
+   },
+   "score": 90.7,
+   "consensus_hit": 3,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": true
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 2,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-35b-a3b",
+   "card": "production_priority",
+   "ok": true,
+   "wall_s": 25.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 47477,
+   "in_tokens": 45162,
+   "out_tokens": 2315,
+   "thinking_events": 579,
+   "trace_id": "d8407709c98496f4f58c7059e15364f2",
+   "n_tools": 2,
+   "n_optimize": 1,
+   "n_task": 1,
+   "n_write": 0,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 1,
+   "final_len": 740,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": true,
+   "continuity": true,
+   "n_metrics": 6,
+   "kw_vals": [
+    151.0,
+    302.0,
+    1250.0,
+    1303.0,
+    1304.0
+   ],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 25.0,
+    "B": 14.0,
+    "C": 20.0,
+    "E": 0.0,
+    "D": 15.0
+   },
+   "score": 74.0,
+   "consensus_hit": 3,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 1,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-flash-2026-04-16",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 77.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 250106,
+   "in_tokens": 242238,
+   "out_tokens": 7868,
+   "thinking_events": 1274,
+   "trace_id": "6e7655cca1aea5d6191cc8204ad24c56",
+   "n_tools": 15,
+   "n_optimize": 2,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 1,
+   "final_len": 777,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": true,
+   "continuity": true,
+   "n_metrics": 7,
+   "kw_vals": [
+    53.0,
+    1250.0,
+    1303.0,
+    1520.0,
+    1524.5,
+    1635.0
+   ],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 0.0,
+    "D": 15.0
+   },
+   "score": 80.0,
+   "consensus_hit": 3,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": true
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 2,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-flash-2026-04-16",
+   "card": "production_priority",
+   "ok": true,
+   "wall_s": 69.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 119714,
+   "in_tokens": 110941,
+   "out_tokens": 8773,
+   "thinking_events": 1680,
+   "trace_id": "4f58cc08b7e6342945d1c8aa8fea2547",
+   "n_tools": 6,
+   "n_optimize": 4,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 2,
+   "final_len": 1230,
+   "n_plans": 1,
+   "plan_labels": [
+    "调需量+保供"
+   ],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": false,
+   "continuity": true,
+   "n_metrics": 15,
+   "kw_vals": [
+    50.0,
+    60.0,
+    540.0,
+    604.0,
+    1000.0,
+    1250.0,
+    1303.0,
+    1310.0,
+    1524.5
+   ],
+   "baseline_peak_kw": 1736.5,
+   "peak_demand_kw": 1310.0,
+   "charge_kwh": 1959.6,
+   "discharge_kwh": 1763.6,
+   "has_dispatch_preview": true,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 11.83,
+    "D": 15.0
+   },
+   "score": 91.83,
+   "consensus_hit": 2,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": true
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 2,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-flash",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 39.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 90383,
+   "in_tokens": 86221,
+   "out_tokens": 4162,
+   "thinking_events": 1153,
+   "trace_id": "95a0fd6598cf56b69a8ba3456441b230",
+   "n_tools": 4,
+   "n_optimize": 2,
+   "n_task": 1,
+   "n_write": 0,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 1,
+   "final_len": 978,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": true,
+   "continuity": false,
+   "n_metrics": 12,
+   "kw_vals": [
+    426.0,
+    1000.0,
+    1250.0,
+    1303.0,
+    1310.0,
+    1510.0,
+    1524.5,
+    1736.0,
+    2000.0
+   ],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 25.0,
+    "B": 17.0,
+    "C": 20.0,
+    "E": 0.0,
+    "D": 15.0
+   },
+   "score": 77.0,
+   "consensus_hit": 3,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": true
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 2,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-flash",
+   "card": "production_priority",
+   "ok": true,
+   "wall_s": 68.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 258980,
+   "in_tokens": 251683,
+   "out_tokens": 7297,
+   "thinking_events": 1164,
+   "trace_id": "5661ccc744e924b50be26c02b60f342a",
+   "n_tools": 13,
+   "n_optimize": 4,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 2,
+   "final_len": 993,
+   "n_plans": 1,
+   "plan_labels": [
+    "中档保供+放宽需量"
+   ],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": true,
+   "continuity": true,
+   "n_metrics": 15,
+   "kw_vals": [
+    1250.0,
+    1303.0,
+    1304.0,
+    1350.0,
+    1510.0,
+    1737.0,
+    1858.0,
+    2064.0,
+    7665.0
+   ],
+   "baseline_peak_kw": 1736.5,
+   "peak_demand_kw": 1350.0,
+   "charge_kwh": 2063.9,
+   "discharge_kwh": 1857.5,
+   "has_dispatch_preview": true,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 10.72,
+    "D": 15.0
+   },
+   "score": 90.72,
+   "consensus_hit": 3,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 1,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-max-preview",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 90.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 165104,
+   "in_tokens": 161282,
+   "out_tokens": 3822,
+   "thinking_events": 530,
+   "trace_id": "6251bbf5d133c5504214da5d4f0cb25f",
+   "n_tools": 8,
+   "n_optimize": 1,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 1,
+   "final_len": 672,
+   "n_plans": 0,
+   "plan_labels": [],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": false,
+   "continuity": true,
+   "n_metrics": 4,
+   "kw_vals": [
+    53.0,
+    1250.0,
+    1303.0,
+    1350.0
+   ],
+   "baseline_peak_kw": null,
+   "peak_demand_kw": null,
+   "charge_kwh": null,
+   "discharge_kwh": null,
+   "has_dispatch_preview": false,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 0.0,
+    "D": 15.0
+   },
+   "score": 80.0,
+   "consensus_hit": 2,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 1,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-max-preview",
+   "card": "production_priority",
+   "ok": true,
+   "wall_s": 169.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 221422,
+   "in_tokens": 214707,
+   "out_tokens": 6715,
+   "thinking_events": 883,
+   "trace_id": "8364047241509fac98f9f32cab6908c1",
+   "n_tools": 12,
+   "n_optimize": 6,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 2,
+   "final_len": 823,
+   "n_plans": 2,
+   "plan_labels": [
+    "保供中档+需量压到最低",
+    "保供中档+省钱优先"
+   ],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": true,
+   "continuity": true,
+   "n_metrics": 16,
+   "kw_vals": [
+    53.0,
+    54.0,
+    85.0,
+    302.0,
+    376.0,
+    406.0,
+    1000.0,
+    1250.0,
+    1303.0,
+    1304.0,
+    1510.0
+   ],
+   "baseline_peak_kw": 1736.5,
+   "peak_demand_kw": 1512.4,
+   "charge_kwh": 2502.9,
+   "discharge_kwh": 2252.6,
+   "has_dispatch_preview": true,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 14.22,
+    "D": 10.56
+   },
+   "score": 89.78,
+   "consensus_hit": 3,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 1,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-plus-2026-04-02",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 141.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 231041,
+   "in_tokens": 224068,
+   "out_tokens": 6973,
+   "thinking_events": 995,
+   "trace_id": "7ba049d7413af88d2ced421d0464973f",
+   "n_tools": 10,
+   "n_optimize": 3,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 2,
+   "final_len": 856,
+   "n_plans": 1,
+   "plan_labels": [
+    "需量压降"
+   ],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": true,
+   "continuity": false,
+   "n_metrics": 15,
+   "kw_vals": [
+    60.0,
+    274.5,
+    426.5,
+    486.0,
+    1250.0,
+    1303.0,
+    1310.0,
+    1524.5,
+    1736.0,
+    1736.5
+   ],
+   "baseline_peak_kw": 1736.5,
+   "peak_demand_kw": 1310.0,
+   "charge_kwh": 1940.8,
+   "discharge_kwh": 1746.7,
+   "has_dispatch_preview": true,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 11.81,
+    "D": 12.66
+   },
+   "score": 89.47,
+   "consensus_hit": 3,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": true
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 2,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-plus-2026-04-02",
+   "card": "production_priority",
+   "ok": true,
+   "wall_s": 160.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 238300,
+   "in_tokens": 229970,
+   "out_tokens": 8330,
+   "thinking_events": 1119,
+   "trace_id": "2b1d7ec6fc12a5cb7ada9fcdae51e196",
+   "n_tools": 11,
+   "n_optimize": 5,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 2,
+   "final_len": 761,
+   "n_plans": 1,
+   "plan_labels": [
+    "纯省钱"
+   ],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": true,
+   "continuity": true,
+   "n_metrics": 15,
+   "kw_vals": [
+    53.0,
+    54.0,
+    385.0,
+    1250.0,
+    1303.0,
+    1304.0,
+    1510.0,
+    1524.5,
+    1635.0,
+    2636.0
+   ],
+   "baseline_peak_kw": 1736.5,
+   "peak_demand_kw": 1634.9,
+   "charge_kwh": 2928.7,
+   "discharge_kwh": 2635.9,
+   "has_dispatch_preview": true,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 2.82,
+    "D": 11.16
+   },
+   "score": 78.98,
+   "consensus_hit": 3,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": true
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 2,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-plus",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 146.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 211372,
+   "in_tokens": 203789,
+   "out_tokens": 7583,
+   "thinking_events": 1170,
+   "trace_id": "1cc49e16eaf75a1b321ec2e8ad89aa87",
+   "n_tools": 11,
+   "n_optimize": 4,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 2,
+   "final_len": 675,
+   "n_plans": 1,
+   "plan_labels": [
+    "需量压到最低"
+   ],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": true,
+   "continuity": false,
+   "n_metrics": 14,
+   "kw_vals": [
+    53.0,
+    399.0,
+    433.5,
+    1250.0,
+    1303.0,
+    1524.5,
+    1736.5
+   ],
+   "baseline_peak_kw": 1736.5,
+   "peak_demand_kw": 1303.0,
+   "charge_kwh": 1922.5,
+   "discharge_kwh": 1730.3,
+   "has_dispatch_preview": true,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 12.0,
+    "D": 12.23
+   },
+   "score": 89.23,
+   "consensus_hit": 3,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": true
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 2,
+   "truth_total": 3
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-plus",
+   "card": "production_priority",
+   "ok": true,
+   "wall_s": 143.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 227507,
+   "in_tokens": 220146,
+   "out_tokens": 7361,
+   "thinking_events": 962,
+   "trace_id": "8f44a1a04f778bd45455bf61c52c1b8c",
+   "n_tools": 13,
+   "n_optimize": 6,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 2,
+   "final_len": 764,
+   "n_plans": 3,
+   "plan_labels": [
+    "保供高档(不限需量)",
+    "保供中档+需量1304",
+    "不超申报1304(不额外保供)"
+   ],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": false,
+   "continuity": true,
+   "n_metrics": 18,
+   "kw_vals": [
+    54.0,
+    302.0,
+    432.0,
+    453.0,
+    1250.0,
+    1303.0,
+    1304.0,
+    1462.0,
+    1736.0,
+    1750.0,
+    1944.0,
+    7665.0
+   ],
+   "baseline_peak_kw": 1736.5,
+   "peak_demand_kw": 1304.0,
+   "charge_kwh": 1943.9,
+   "discharge_kwh": 1749.5,
+   "has_dispatch_preview": true,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 20.0,
+    "D": 12.48
+   },
+   "score": 97.48,
+   "consensus_hit": 3,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 1,
+   "truth_total": 3
+  },
+  {
+   "model_id": "system-default",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 89.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 174698,
+   "in_tokens": 157661,
+   "out_tokens": 17037,
+   "thinking_events": 11915,
+   "trace_id": "e8fac43805be722edad9fe31f0c78c41",
+   "n_tools": 10,
+   "n_optimize": 4,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 2,
+   "final_len": 1792,
+   "n_plans": 2,
+   "plan_labels": [
+    "压需量可行极值",
+    "压需量+防逆流"
+   ],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": true,
+   "continuity": false,
+   "n_metrics": 50,
+   "kw_vals": [
+    36.3,
+    39.1,
+    52.7,
+    60.0,
+    77.6,
+    160.9,
+    223.4,
+    239.1,
+    274.5,
+    350.7,
+    351.4,
+    370.9,
+    399.0,
+    426.5,
+    439.1,
+    645.7,
+    1000.0,
+    1101.1,
+    1250.0,
+    1302.7,
+    1303.0,
+    1310.0,
+    1510.0,
+    1524.5,
+    1600.0,
+    1634.9,
+    1736.5,
+    1746.7,
+    1940.8,
+    2000.0,
+    7727.0
+   ],
+   "baseline_peak_kw": 1736.5,
+   "peak_demand_kw": 1310.0,
+   "charge_kwh": 717.4,
+   "discharge_kwh": 645.7,
+   "has_dispatch_preview": true,
+   "best_peak_kw": 1303.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 19.81,
+    "D": 15.0
+   },
+   "score": 99.81,
+   "consensus_hit": 3,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": true
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 2,
+   "truth_total": 3
+  },
+  {
+   "model_id": "system-default",
+   "card": "production_priority",
+   "ok": true,
+   "wall_s": 111.0,
+   "session_status": "completed",
+   "recovered": true,
+   "tokens": 256583,
+   "in_tokens": 234759,
+   "out_tokens": 21824,
+   "thinking_events": 14299,
+   "trace_id": "0b015600f507bec848d0549abd894a03",
+   "n_tools": 15,
+   "n_optimize": 7,
+   "n_task": 1,
+   "n_write": 1,
+   "subagents": [
+    "DispatchPlanningExpert"
+   ],
+   "n_errors": 0,
+   "errors": [],
+   "n_approvals": 0,
+   "n_assistant": 2,
+   "final_len": 2000,
+   "n_plans": 3,
+   "plan_labels": [
+    "保供中档尽力削峰",
+    "保供高档需量1310",
+    "保供高档尽力削峰"
+   ],
+   "has_plan": true,
+   "has_verdict": true,
+   "has_infeasible": true,
+   "continuity": true,
+   "n_metrics": 38,
+   "kw_vals": [
+    53.1,
+    60.0,
+    79.7,
+    136.2,
+    160.9,
+    426.5,
+    439.1,
+    453.0,
+    906.0,
+    942.4,
+    1000.0,
+    1250.0,
+    1303.1,
+    1304.0,
+    1310.0,
+    1461.9,
+    1493.8,
+    1510.0,
+    1512.4,
+    1600.0,
+    1614.1,
+    1659.8,
+    1736.5,
+    7665.0
+   ],
+   "baseline_peak_kw": 1736.5,
+   "peak_demand_kw": 1461.9,
+   "charge_kwh": 1884.7,
+   "discharge_kwh": 1696.2,
+   "has_dispatch_preview": true,
+   "best_peak_kw": 1304.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 15.62,
+    "D": 15.0
+   },
+   "score": 95.62,
+   "consensus_hit": 2,
+   "consensus_total": 3,
+   "truth_hits": {
+    "contract_demand_kw": {
+     "truth": 1250.0,
+     "cited": true
+    },
+    "max_rolling_demand_kw": {
+     "truth": 1524.5,
+     "cited": false
+    },
+    "max_load_kw": {
+     "truth": 1585.4,
+     "cited": false
+    }
+   },
+   "truth_score": 1,
+   "truth_total": 3
+  }
+ ],
+ "per_model": [
+  {
+   "model_id": "system-default",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 200.0,
+   "tokens": 431281,
+   "in_tokens": 392420,
+   "out_tokens": 38861,
+   "thinking": 26214,
+   "n_optimize": 11,
+   "n_task": 2,
+   "n_tools": 25,
+   "n_plans": 5,
+   "final_len": 3792,
+   "score": 97.7,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 17.7,
+    "D": 15.0
+   },
+   "peak_demand_kw": [
+    1310.0,
+    1461.9
+   ],
+   "baseline_peak_kw": [
+    1736.5,
+    1736.5
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [],
+   "metrics": 88,
+   "cost_cny": 0.565
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-plus",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 289.0,
+   "tokens": 438879,
+   "in_tokens": 423935,
+   "out_tokens": 14944,
+   "thinking": 2132,
+   "n_optimize": 10,
+   "n_task": 2,
+   "n_tools": 24,
+   "n_plans": 4,
+   "final_len": 1439,
+   "score": 93.4,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 16.0,
+    "D": 12.4
+   },
+   "peak_demand_kw": [
+    1303.0,
+    1304.0
+   ],
+   "baseline_peak_kw": [
+    1736.5,
+    1736.5
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [],
+   "metrics": 32,
+   "cost_cny": 1.203
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-plus",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 317.0,
+   "tokens": 405455,
+   "in_tokens": 389357,
+   "out_tokens": 16098,
+   "thinking": 1653,
+   "n_optimize": 13,
+   "n_task": 2,
+   "n_tools": 20,
+   "n_plans": 5,
+   "final_len": 1833,
+   "score": 93.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 16.0,
+    "D": 12.0
+   },
+   "peak_demand_kw": [
+    1303.0,
+    1304.0
+   ],
+   "baseline_peak_kw": [
+    1736.5,
+    1736.5
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [],
+   "metrics": 32,
+   "cost_cny": 0.476
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-27b",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 396.0,
+   "tokens": 581077,
+   "in_tokens": 563187,
+   "out_tokens": 17890,
+   "thinking": 2986,
+   "n_optimize": 10,
+   "n_task": 2,
+   "n_tools": 27,
+   "n_plans": 3,
+   "final_len": 2726,
+   "score": 87.0,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 17.0,
+    "E": 16.0,
+    "D": 9.0
+   },
+   "peak_demand_kw": [
+    1303.0,
+    1304.0
+   ],
+   "baseline_peak_kw": [
+    1736.5,
+    1736.5
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [],
+   "metrics": 37,
+   "cost_cny": null
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-flash-2026-04-16",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 146.0,
+   "tokens": 369820,
+   "in_tokens": 353179,
+   "out_tokens": 16641,
+   "thinking": 2954,
+   "n_optimize": 6,
+   "n_task": 2,
+   "n_tools": 21,
+   "n_plans": 1,
+   "final_len": 2007,
+   "score": 85.9,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 5.9,
+    "D": 15.0
+   },
+   "peak_demand_kw": [
+    null,
+    1310.0
+   ],
+   "baseline_peak_kw": [
+    null,
+    1736.5
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [],
+   "metrics": 22,
+   "cost_cny": 0.642
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-max-preview",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 259.0,
+   "tokens": 386526,
+   "in_tokens": 375989,
+   "out_tokens": 10537,
+   "thinking": 1413,
+   "n_optimize": 7,
+   "n_task": 2,
+   "n_tools": 20,
+   "n_plans": 2,
+   "final_len": 1495,
+   "score": 84.9,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 7.1,
+    "D": 12.8
+   },
+   "peak_demand_kw": [
+    null,
+    1512.4
+   ],
+   "baseline_peak_kw": [
+    null,
+    1736.5
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [],
+   "metrics": 20,
+   "cost_cny": 3.243
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-plus-2026-04-02",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 301.0,
+   "tokens": 469341,
+   "in_tokens": 454038,
+   "out_tokens": 15303,
+   "thinking": 2114,
+   "n_optimize": 8,
+   "n_task": 2,
+   "n_tools": 21,
+   "n_plans": 2,
+   "final_len": 1617,
+   "score": 84.2,
+   "parts": {
+    "A": 25.0,
+    "B": 20.0,
+    "C": 20.0,
+    "E": 7.3,
+    "D": 11.9
+   },
+   "peak_demand_kw": [
+    1310.0,
+    1634.9
+   ],
+   "baseline_peak_kw": [
+    1736.5,
+    1736.5
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [],
+   "metrics": 30,
+   "cost_cny": 1.279
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-flash",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 107.0,
+   "tokens": 349363,
+   "in_tokens": 337904,
+   "out_tokens": 11459,
+   "thinking": 2317,
+   "n_optimize": 6,
+   "n_task": 2,
+   "n_tools": 17,
+   "n_plans": 1,
+   "final_len": 1971,
+   "score": 83.9,
+   "parts": {
+    "A": 25.0,
+    "B": 18.5,
+    "C": 20.0,
+    "E": 5.4,
+    "D": 15.0
+   },
+   "peak_demand_kw": [
+    null,
+    1350.0
+   ],
+   "baseline_peak_kw": [
+    null,
+    1736.5
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [],
+   "metrics": 27,
+   "cost_cny": 0.577
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.6-35b-a3b",
+   "card": "demand_cap",
+   "ok": true,
+   "wall_s": 90.0,
+   "tokens": 231985,
+   "in_tokens": 222488,
+   "out_tokens": 9497,
+   "thinking": 1497,
+   "n_optimize": 4,
+   "n_task": 2,
+   "n_tools": 12,
+   "n_plans": 1,
+   "final_len": 1498,
+   "score": 82.3,
+   "parts": {
+    "A": 25.0,
+    "B": 17.0,
+    "C": 20.0,
+    "E": 5.3,
+    "D": 15.0
+   },
+   "peak_demand_kw": [
+    1350.0,
+    null
+   ],
+   "baseline_peak_kw": [
+    1736.5,
+    null
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [],
+   "metrics": 16,
+   "cost_cny": null
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-plus-2026-04-20",
+   "card": "demand_cap",
+   "ok": false,
+   "wall_s": 252.0,
+   "tokens": 166998,
+   "in_tokens": 159975,
+   "out_tokens": 7023,
+   "thinking": 1288,
+   "n_optimize": 7,
+   "n_task": 1,
+   "n_tools": 13,
+   "n_plans": 2,
+   "final_len": 719,
+   "score": 51.7,
+   "parts": {
+    "A": 12.5,
+    "B": 16.5,
+    "C": 12.0,
+    "E": 5.4,
+    "D": 5.2
+   },
+   "peak_demand_kw": [
+    1634.9,
+    null
+   ],
+   "baseline_peak_kw": [
+    1736.5,
+    null
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-ead909f4-ff78-90fd-a595-08384f6cdbe0', 'request_id': 'ead909f4-ff78-90fd-a595-08384f6cdbe0'}"
+   ],
+   "metrics": 12,
+   "cost_cny": 0.198
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-35b-a3b",
+   "card": "demand_cap",
+   "ok": false,
+   "wall_s": 7.0,
+   "tokens": 0,
+   "in_tokens": 0,
+   "out_tokens": 0,
+   "thinking": 2,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_tools": 0,
+   "n_plans": 0,
+   "final_len": 0,
+   "score": 4.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "peak_demand_kw": [
+    null,
+    null
+   ],
+   "baseline_peak_kw": [
+    null,
+    null
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-3c219876-ef6a-9945-9459-2c0849e22f8c', 'request_id': '3c219876-ef6a-9945-9459-2c0849e22f8c'}",
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-338813d8-3a92-9ffb-add6-0c9d14021e72', 'request_id': '338813d8-3a92-9ffb-add6-0c9d14021e72'}"
+   ],
+   "metrics": 0,
+   "cost_cny": null
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-122b-a10b",
+   "card": "demand_cap",
+   "ok": false,
+   "wall_s": 8.0,
+   "tokens": 0,
+   "in_tokens": 0,
+   "out_tokens": 0,
+   "thinking": 2,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_tools": 0,
+   "n_plans": 0,
+   "final_len": 0,
+   "score": 4.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "peak_demand_kw": [
+    null,
+    null
+   ],
+   "baseline_peak_kw": [
+    null,
+    null
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-6c3a3f35-716c-9a03-b311-809110a72448', 'request_id': '6c3a3f35-716c-9a03-b311-809110a72448'}",
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-29d13994-201b-9fb1-b2f9-dc27cd9554b3', 'request_id': '29d13994-201b-9fb1-b2f9-dc27cd9554b3'}"
+   ],
+   "metrics": 0,
+   "cost_cny": null
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-flash-2026-02-23",
+   "card": "demand_cap",
+   "ok": false,
+   "wall_s": 8.0,
+   "tokens": 0,
+   "in_tokens": 0,
+   "out_tokens": 0,
+   "thinking": 2,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_tools": 0,
+   "n_plans": 0,
+   "final_len": 0,
+   "score": 4.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "peak_demand_kw": [
+    null,
+    null
+   ],
+   "baseline_peak_kw": [
+    null,
+    null
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-58b05127-cf06-922d-939a-c86128b90688', 'request_id': '58b05127-cf06-922d-939a-c86128b90688'}",
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-c56daeec-183d-948b-b289-5e44e0bb3cb2', 'request_id': 'c56daeec-183d-948b-b289-5e44e0bb3cb2'}"
+   ],
+   "metrics": 0,
+   "cost_cny": null
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-flash",
+   "card": "demand_cap",
+   "ok": false,
+   "wall_s": 9.0,
+   "tokens": 0,
+   "in_tokens": 0,
+   "out_tokens": 0,
+   "thinking": 2,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_tools": 0,
+   "n_plans": 0,
+   "final_len": 0,
+   "score": 4.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "peak_demand_kw": [
+    null,
+    null
+   ],
+   "baseline_peak_kw": [
+    null,
+    null
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-2e514234-30bc-93ad-9964-963e42508284', 'request_id': '2e514234-30bc-93ad-9964-963e42508284'}",
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-42efcee7-5609-9851-89e9-fff1362233f9', 'request_id': '42efcee7-5609-9851-89e9-fff1362233f9'}"
+   ],
+   "metrics": 0,
+   "cost_cny": null
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-plus-2026-02-15",
+   "card": "demand_cap",
+   "ok": false,
+   "wall_s": 9.0,
+   "tokens": 0,
+   "in_tokens": 0,
+   "out_tokens": 0,
+   "thinking": 2,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_tools": 0,
+   "n_plans": 0,
+   "final_len": 0,
+   "score": 4.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "peak_demand_kw": [
+    null,
+    null
+   ],
+   "baseline_peak_kw": [
+    null,
+    null
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-ccba4ee9-ac7c-97d6-bdc9-f74d4134d74e', 'request_id': 'ccba4ee9-ac7c-97d6-bdc9-f74d4134d74e'}",
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-209e96d1-2467-9118-83cb-fafbb4f987fd', 'request_id': '209e96d1-2467-9118-83cb-fafbb4f987fd'}"
+   ],
+   "metrics": 0,
+   "cost_cny": null
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-27b",
+   "card": "demand_cap",
+   "ok": false,
+   "wall_s": 10.0,
+   "tokens": 0,
+   "in_tokens": 0,
+   "out_tokens": 0,
+   "thinking": 2,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_tools": 0,
+   "n_plans": 0,
+   "final_len": 0,
+   "score": 4.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "peak_demand_kw": [
+    null,
+    null
+   ],
+   "baseline_peak_kw": [
+    null,
+    null
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-5ba8165c-2eb3-95eb-a7b3-3e39cb36afcd', 'request_id': '5ba8165c-2eb3-95eb-a7b3-3e39cb36afcd'}",
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-3b8ae95a-4eac-9243-b6df-30c6c4d68631', 'request_id': '3b8ae95a-4eac-9243-b6df-30c6c4d68631'}"
+   ],
+   "metrics": 0,
+   "cost_cny": null
+  },
+  {
+   "model_id": "sys-dashscope-qwen3.5-397b-a17b",
+   "card": "demand_cap",
+   "ok": false,
+   "wall_s": 10.0,
+   "tokens": 0,
+   "in_tokens": 0,
+   "out_tokens": 0,
+   "thinking": 2,
+   "n_optimize": 0,
+   "n_task": 0,
+   "n_tools": 0,
+   "n_plans": 0,
+   "final_len": 0,
+   "score": 4.0,
+   "parts": {
+    "A": 0.0,
+    "B": 0.0,
+    "C": 4.0,
+    "E": 0.0,
+    "D": 0.0
+   },
+   "peak_demand_kw": [
+    null,
+    null
+   ],
+   "baseline_peak_kw": [
+    null,
+    null
+   ],
+   "consensus": 0.0,
+   "consensus_total": 0,
+   "errors": [
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-8a5f7c9e-c3c6-9988-9a43-be5dec563953', 'request_id': '8a5f7c9e-c3c6-9988-9a43-be5dec563953'}",
+    "Error code: 400 - {'error': {'message': 'Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment', 'type': 'Arrearage', 'param': None, 'code': 'Arrearage'}, 'id': 'chatcmpl-1c1e76a5-589d-9e74-9ab9-f6328aab6a2d', 'request_id': '1c1e76a5-589d-9e74-9ab9-f6328aab6a2d'}"
+   ],
+   "metrics": 0,
+   "cost_cny": null
+  }
+ ]
+}

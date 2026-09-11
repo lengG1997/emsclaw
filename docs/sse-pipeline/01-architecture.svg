@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 760" font-family="Segoe UI, -apple-system, Roboto, sans-serif">
+  <defs>
+    <marker id="ab" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#2563eb"/></marker>
+    <marker id="ao" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#ea580c"/></marker>
+    <marker id="ag" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#6b7280"/></marker>
+    <marker id="ae" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#059669"/></marker>
+    <marker id="ap" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#7c3aed"/></marker>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.12"/></filter>
+  </defs>
+  <rect width="1100" height="760" fill="#ffffff"/>
+  <text x="550" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">emsclaw 流式管道：SSE &#8594; Queue &#8594; Worker &#8594; Agent</text>
+  <text x="550" y="58" text-anchor="middle" font-size="12" fill="#64748b">单线程事件循环 · 生产者/消费者解耦 · 哨兵 None 协同关闭</text>
+  <g filter="url(#sh)">
+    <rect x="60" y="90" width="220" height="70" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <rect x="60" y="90" width="220" height="22" rx="8" fill="#e2e8f0"/>
+    <circle cx="78" cy="101" r="4" fill="#ef4444"/><circle cx="92" cy="101" r="4" fill="#f59e0b"/><circle cx="106" cy="101" r="4" fill="#22c55e"/>
+    <text x="170" y="135" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">&#128241; 浏览器</text>
+    <text x="170" y="152" text-anchor="middle" font-size="11" fill="#64748b">POST /chat · SSE 消费</text>
+  </g>
+  <g filter="url(#sh)">
+    <rect x="340" y="90" width="240" height="70" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="460" y="118" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">&#9729; SSE 端点 (chat)</text>
+    <text x="460" y="136" text-anchor="middle" font-size="11" fill="#1e40af">请求协程：建 queue + 起任务</text>
+    <text x="460" y="152" text-anchor="middle" font-size="10" fill="#64748b">return EventSourceResponse(gen)</text>
+  </g>
+  <g filter="url(#sh)">
+    <rect x="640" y="90" width="380" height="70" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-dasharray="5,3"/>
+    <text x="830" y="118" text-anchor="middle" font-size="14" font-weight="700" fill="#9a3412">&#128230; 全局注册表 (模块级 dict)</text>
+    <text x="830" y="136" text-anchor="middle" font-size="11" fill="#9a3412">_agent_queues[sid]=queue · _agent_tasks[sid]=task</text>
+    <text x="830" y="152" text-anchor="middle" font-size="10" fill="#9a3412">跨协程通信中转 · 重连复用</text>
+  </g>
+  <g filter="url(#sh)">
+    <rect x="540" y="320" width="340" height="56" rx="28" fill="#f8fafc" stroke="#475569"/>
+    <text x="710" y="346" text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">&#128229; asyncio.Queue (会话级)</text>
+    <text x="710" y="364" text-anchor="middle" font-size="11" fill="#64748b">缓冲 · 订阅唤醒 · 哨兵 None = 流结束</text>
+  </g>
+  <g filter="url(#sh)">
+    <rect x="120" y="470" width="320" height="96" rx="10" fill="#ecfdf5" stroke="#059669"/>
+    <text x="280" y="496" text-anchor="middle" font-size="14" font-weight="700" fill="#065f46">&#9881; 后台 Worker (生产者协程)</text>
+    <text x="280" y="516" text-anchor="middle" font-size="11" fill="#065f46">async for evt in arun_science_task_stream(...):</text>
+    <text x="280" y="533" text-anchor="middle" font-size="11" fill="#065f46">  _emit_to_sse &#8594; _agent_queues[sid].put_nowait(evt)</text>
+    <text x="280" y="552" text-anchor="middle" font-size="11" fill="#9a3412">finally: emit(done) &#8594; put_nowait(None) 哨兵</text>
+  </g>
+  <g filter="url(#sh)">
+    <rect x="760" y="470" width="260" height="96" rx="10" fill="#faf5ff" stroke="#7c3aed"/>
+    <text x="890" y="496" text-anchor="middle" font-size="14" font-weight="700" fill="#6b21a8">&#129504; Agent 运行时</text>
+    <text x="890" y="516" text-anchor="middle" font-size="11" fill="#6b21a8">arun_science_task_stream</text>
+    <text x="890" y="533" text-anchor="middle" font-size="10" fill="#7c3aed">异步生成器：yield 事件逐个吐</text>
+    <text x="890" y="552" text-anchor="middle" font-size="10" fill="#7c3aed">tool_call / message_chunk / plan / approval</text>
+  </g>
+  <g filter="url(#sh)">
+    <rect x="340" y="620" width="440" height="96" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="560" y="646" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">&#128229; event_generator (消费者协程)</text>
+    <text x="560" y="666" text-anchor="middle" font-size="11" fill="#1e40af">while True: event = await queue.get()  &#8594; 订阅挂起,0 CPU</text>
+    <text x="560" y="684" text-anchor="middle" font-size="11" fill="#1e40af">if event is None: break   else: yield event &#8594; SSE</text>
+    <text x="560" y="703" text-anchor="middle" font-size="10" fill="#64748b">finally: 若 queues[sid] is queue &#8594; pop(防误删新连接)</text>
+  </g>
+  <line x1="280" y1="125" x2="338" y2="125" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+  <text x="309" y="116" text-anchor="middle" font-size="10" fill="#2563eb">POST</text>
+  <line x1="580" y1="125" x2="638" y2="125" stroke="#ea580c" stroke-width="1.8" marker-end="url(#ao)"/>
+  <text x="609" y="116" text-anchor="middle" font-size="10" fill="#ea580c">挂 queue</text>
+  <path d="M 380,160 C 280,400 280,420 280,468" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#ao)"/>
+  <text x="225" y="320" text-anchor="middle" font-size="10" fill="#ea580c">create_task(worker)</text>
+  <path d="M 460,160 C 460,400 560,580 560,618" fill="none" stroke="#2563eb" stroke-width="1.8" marker-end="url(#ab)"/>
+  <text x="470" y="430" text-anchor="start" font-size="10" fill="#2563eb">返回生成器</text>
+  <line x1="440" y1="518" x2="758" y2="518" stroke="#7c3aed" stroke-width="1.8" marker-end="url(#ap)"/>
+  <text x="599" y="509" text-anchor="middle" font-size="10" fill="#7c3aed">async for evt (逐个拉)</text>
+  <line x1="758" y1="546" x2="440" y2="546" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="4,2" marker-end="url(#ag)"/>
+  <text x="599" y="540" text-anchor="middle" font-size="9" fill="#6b7280">生成器耗尽 &#8594; 循环退出</text>
+  <path d="M 280,470 C 280,420 540,392 600,378" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#ae)"/>
+  <text x="440" y="420" text-anchor="middle" font-size="10" fill="#059669">put_nowait(evt)</text>
+  <path d="M 440,518 C 560,520 660,460 690,378" fill="none" stroke="#9a3412" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#ao)"/>
+  <text x="600" y="475" text-anchor="middle" font-size="10" fill="#9a3412">put_nowait(None) 哨兵</text>
+  <path d="M 640,378 C 600,440 560,560 560,618" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+  <text x="645" y="500" text-anchor="start" font-size="10" fill="#2563eb">await get() 唤醒</text>
+  <path d="M 780,648 L 1080,648 L 1080,50 L 170,50 L 170,88" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+  <text x="1063" y="350" text-anchor="end" font-size="10" fill="#2563eb">yield event (SSE)</text>
+  <path d="M 120,540 L 20,540 L 20,80 L 730,80 L 730,86" fill="none" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#ag)"/>
+  <text x="30" y="350" text-anchor="start" font-size="9" fill="#6b7280">_agent_tasks.pop</text>
+  <path d="M 780,700 L 1090,700 L 1090,72 L 850,72 L 850,86" fill="none" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#ag)"/>
+  <text x="1075" y="640" text-anchor="end" font-size="9" fill="#6b7280">_agent_queues.pop</text>
+  <rect x="50" y="600" width="250" height="148" rx="6" fill="#fafafa" stroke="#e2e8f0"/>
+  <text x="62" y="620" font-size="12" font-weight="700" fill="#0f172a">图例</text>
+  <line x1="64" y1="640" x2="96" y2="640" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/><text x="104" y="644" font-size="11" fill="#334155">主数据流(SSE/事件)</text>
+  <line x1="64" y1="662" x2="96" y2="662" stroke="#ea580c" stroke-width="2" marker-end="url(#ao)"/><text x="104" y="666" font-size="11" fill="#334155">控制/触发+哨兵</text>
+  <line x1="64" y1="684" x2="96" y2="684" stroke="#059669" stroke-width="2" marker-end="url(#ae)"/><text x="104" y="688" font-size="11" fill="#334155">put 事件入队</text>
+  <line x1="64" y1="706" x2="96" y2="706" stroke="#7c3aed" stroke-width="2" marker-end="url(#ap)"/><text x="104" y="710" font-size="11" fill="#334155">async for 拉事件</text>
+  <line x1="64" y1="728" x2="96" y2="728" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="4,2" marker-end="url(#ag)"/><text x="104" y="732" font-size="11" fill="#334155">注册表摘除/耗尽</text>
+</svg>

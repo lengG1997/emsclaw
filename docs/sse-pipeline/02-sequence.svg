@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 1040" font-family="Segoe UI, -apple-system, Roboto, sans-serif">
+  <defs>
+    <marker id="ab" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#2563eb"/></marker>
+    <marker id="ao" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#ea580c"/></marker>
+    <marker id="ag" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#6b7280"/></marker>
+    <marker id="ae" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#059669"/></marker>
+    <marker id="ap" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#7c3aed"/></marker>
+  </defs>
+  <rect width="1180" height="980" fill="#ffffff"/>
+  <text x="590" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">SSE 流式管道时序：一次完整请求</text>
+  <text x="590" y="54" text-anchor="middle" font-size="12" fill="#64748b">单线程事件循环 · await 订阅挂起不烧 CPU · 哨兵 None 协同关闭</text>
+  <rect x="65" y="78" width="150" height="44" rx="6" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="140" y="97" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">&#128241; 浏览器</text>
+  <text x="140" y="113" text-anchor="middle" font-size="10" fill="#64748b">(消费者)</text>
+  <line x1="140" y1="122" x2="140" y2="940" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <rect x="285" y="78" width="150" height="44" rx="6" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="360" y="97" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">&#9729; SSE 端点</text>
+  <text x="360" y="113" text-anchor="middle" font-size="10" fill="#64748b">(请求协程)</text>
+  <line x1="360" y1="122" x2="360" y2="940" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <rect x="485" y="78" width="150" height="44" rx="6" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="560" y="97" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">&#128230; 注册表</text>
+  <text x="560" y="113" text-anchor="middle" font-size="10" fill="#64748b">_agent_queues</text>
+  <line x1="560" y1="122" x2="560" y2="940" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <rect x="705" y="78" width="150" height="44" rx="6" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="780" y="97" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">&#9881; Worker</text>
+  <text x="780" y="113" text-anchor="middle" font-size="10" fill="#64748b">(生产者)</text>
+  <line x1="780" y1="122" x2="780" y2="940" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <rect x="925" y="78" width="150" height="44" rx="6" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="1000" y="97" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">&#129504; Agent</text>
+  <text x="1000" y="113" text-anchor="middle" font-size="10" fill="#64748b">arun_science_task_stream</text>
+  <line x1="1000" y1="122" x2="1000" y2="940" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <line x1="140" y1="138" x2="354" y2="138" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+  <text x="247" y="131" text-anchor="middle" font-size="11" fill="#2563eb">1. POST /sessions/{id}/chat</text>
+  <rect x="356" y="162" width="8" height="460" fill="#2563eb" opacity="0.35"/>
+  <line x1="366" y1="182" x2="554" y2="182" stroke="#ea580c" stroke-width="1.8" marker-end="url(#ao)"/>
+  <text x="460" y="175" text-anchor="middle" font-size="11" fill="#ea580c">2. queue = Queue(); _agent_queues[sid]=queue</text>
+  <line x1="366" y1="222" x2="554" y2="222" stroke="#ea580c" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#ao)"/>
+  <text x="460" y="215" text-anchor="middle" font-size="11" fill="#ea580c">3. create_task(worker) &#8594; _agent_tasks[sid]=task</text>
+  <path d="M 360,262 C 430,278 430,278 366,266" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="3,3" marker-end="url(#ag)"/>
+  <text x="440" y="272" text-anchor="start" font-size="10" fill="#64748b">4. return EventSourceResponse(gen)</text>
+  <line x1="366" y1="302" x2="774" y2="302" stroke="#ea580c" stroke-width="2" marker-end="url(#ao)"/>
+  <text x="570" y="295" text-anchor="middle" font-size="11" fill="#ea580c">5. worker 协程启动（不等待，立即返回）</text>
+  <rect x="776" y="326" width="8" height="600" fill="#059669" opacity="0.35"/>
+  <rect x="120" y="346" width="900" height="230" fill="none" stroke="#7c3aed" stroke-width="1.2" stroke-dasharray="5,3" rx="4"/>
+  <rect x="120" y="346" width="120" height="20" fill="#7c3aed"/>
+  <text x="132" y="360" font-size="11" font-weight="700" fill="#ffffff">loop [事件流]</text>
+  <line x1="786" y1="366" x2="994" y2="366" stroke="#7c3aed" stroke-width="2" marker-end="url(#ap)"/>
+  <text x="890" y="359" text-anchor="middle" font-size="11" fill="#7c3aed">6. async for evt（拉一个事件）</text>
+  <line x1="994" y1="390" x2="786" y2="390" stroke="#7c3aed" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#ap)"/>
+  <text x="890" y="383" text-anchor="middle" font-size="11" fill="#7c3aed">7. yield evt（message_chunk/tool/plan…）</text>
+  <line x1="786" y1="430" x2="566" y2="430" stroke="#059669" stroke-width="2" marker-end="url(#ae)"/>
+  <text x="676" y="423" text-anchor="middle" font-size="11" fill="#059669">8. _emit_to_sse &#8594; queues[sid].put_nowait(evt)</text>
+  <line x1="560" y1="470" x2="366" y2="470" stroke="#2563eb" stroke-width="1.8" stroke-dasharray="4,2" marker-end="url(#ab)"/>
+  <text x="463" y="463" text-anchor="middle" font-size="10" fill="#2563eb">9. asyncio 唤醒挂起的消费者</text>
+  <text x="360" y="510" text-anchor="middle" font-size="10" fill="#64748b">10. await queue.get() 返回 evt（此前协程挂起,0 CPU）</text>
+  <line x1="354" y1="546" x2="146" y2="546" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+  <text x="250" y="539" text-anchor="middle" font-size="11" fill="#2563eb">11. yield event &#8594; SSE &#8594; 浏览器</text>
+  <text x="570" y="592" text-anchor="middle" font-size="10" fill="#7c3aed">&#8634; 回到 6，拉下一个事件（直到 Agent 生成器耗尽）</text>
+  <line x1="994" y1="586" x2="786" y2="586" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="4,2" marker-end="url(#ag)"/>
+  <text x="890" y="579" text-anchor="middle" font-size="11" fill="#6b7280">12. 生成器耗尽 &#8594; async for 自然退出</text>
+  <rect x="120" y="626" width="900" height="260" fill="none" stroke="#9a3412" stroke-width="1.2" rx="4"/>
+  <rect x="120" y="626" width="96" height="20" fill="#9a3412"/>
+  <text x="132" y="640" font-size="11" font-weight="700" fill="#ffffff">finally</text>
+  <line x1="786" y1="652" x2="566" y2="652" stroke="#059669" stroke-width="2" marker-end="url(#ae)"/>
+  <text x="676" y="645" text-anchor="middle" font-size="11" fill="#059669">13. emit(done 事件)（统计/文件清单）</text>
+  <line x1="786" y1="686" x2="566" y2="686" stroke="#ea580c" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#ao)"/>
+  <text x="676" y="679" text-anchor="middle" font-size="11" fill="#9a3412">14. queues[sid].put_nowait(None) &#9888; 哨兵</text>
+  <line x1="560" y1="722" x2="366" y2="722" stroke="#2563eb" stroke-width="1.8" stroke-dasharray="4,2" marker-end="url(#ab)"/>
+  <text x="463" y="715" text-anchor="middle" font-size="10" fill="#2563eb">15. 消费者收到 done, yield 给浏览器</text>
+  <line x1="560" y1="752" x2="366" y2="752" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+  <text x="463" y="745" text-anchor="middle" font-size="11" fill="#2563eb">16. await get() = None &#8594; break 收摊</text>
+  <line x1="786" y1="790" x2="566" y2="790" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="3,3" marker-end="url(#ag)"/>
+  <text x="676" y="783" text-anchor="middle" font-size="10" fill="#6b7280">17. _agent_tasks.pop(sid)</text>
+  <line x1="354" y1="820" x2="554" y2="820" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="3,3" marker-end="url(#ag)"/>
+  <text x="460" y="813" text-anchor="middle" font-size="10" fill="#6b7280">18. 若 queues[sid] is queue &#8594; _agent_queues.pop(sid)</text>
+  <circle cx="140" cy="900" r="7" fill="#0f172a"/>
+  <circle cx="140" cy="900" r="11" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+  <circle cx="360" cy="900" r="7" fill="#0f172a"/>
+  <circle cx="360" cy="900" r="11" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+  <circle cx="560" cy="900" r="7" fill="#0f172a"/>
+  <circle cx="560" cy="900" r="11" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+  <circle cx="780" cy="900" r="7" fill="#0f172a"/>
+  <circle cx="780" cy="900" r="11" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+  <circle cx="1000" cy="900" r="7" fill="#0f172a"/>
+  <circle cx="1000" cy="900" r="11" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+  <rect x="120" y="914" width="940" height="64" rx="6" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="135" y="932" font-size="11" font-weight="700" fill="#9a3412">重连（is_reconnect）</text>
+  <text x="135" y="948" font-size="10" fill="#9a3412">复用正在跑的 worker（不重启）；client_cursor=event_id &#8594; 先从 session.events 回放游标之后的历史，再接 queue 实时流。</text>
+  <text x="135" y="964" font-size="10" fill="#9a3412">孤儿检测：DB 状态=RUNNING 但无活跃 task（重启后）&#8594; 标 COMPLETED + 发 done，不启动幻影 worker。</text>
+</svg>

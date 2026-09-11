@@ -1,0 +1,12 @@
+# Exclude large/irrelevant directories from Docker build context
+# (build context = 仓库根，三个 Python 服务共用)
+workspace/
+.git/
+.gitignore
+.venv/
+emsclaw/frontend/
+emsclaw/redis/
+*.pyc
+__pycache__/
+.env
+.cursor/
