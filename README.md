@@ -126,6 +126,7 @@ docker-compose.langfuse.yml          # 可观测性栈（可选叠加）
 > 3. 本地自建模型会被成本统计按 qwen-plus 价虚报（`emsclaw_backend/route/statistics.py` 兜底分支），需补 rate=0 分支。
 
 > 端到端评测方法与选型结论（17 模型 × 2 张快捷卡片真实运行）见 [模型选型评测](docs/model-evaluation.md)。
+> 上述结论背后的机制（显存怎么算、KV cache / 前缀缓存为什么生效、MoE 省的是什么）见 [大模型基础知识与选型指南](docs/llm-basics-and-selection-guide.md)。
 
 ## 快速开始
 
@@ -186,6 +187,7 @@ Windows 下有 `.bat` 辅助脚本（`rebuild-all.bat`、`rebuild-backend.bat`�
 | **[架构](docs/architecture.md)** | 服务拓扑与端口、后端分层、Agent 运行时（deepagents 0.6.x）、SSE 数据流与生产者/消费者解构、HITL 审批全链路、提示词五层边界、技术栈与部署 | 后端、架构、二次开发 |
 | **[演示](docs/demo.md)** | 在线环境入口、7 张界面截图导览、快捷卡片端到端验证基线（9 卡 / 535.5s / $0.12）、在线 LLM-as-Judge + 离线 Code Evaluator 双层评测、Langfuse 可观测 | 首次体验、评测、运维 |
 | **[模型选型评测](docs/model-evaluation.md)** | 17 个模型 × 2 张卡片端到端批量评测（34 次真实运行）：评分维度与权重、选型结论与理由、物理下限独立校验、需量电费折算成本（元/月 vs 元/次）、复现步骤 | 选型、评测、成本决策 |
+| **[大模型基础知识与选型指南](docs/llm-basics-and-selection-guide.md)** | 从「一个 token 怎么被算出来」讲到选型决策：分词 / 嵌入 / QKV / 注意力 / FFN / 采样、KV cache 与前缀缓存（链式哈希）、PagedAttention、稠密与 MoE、TTFT / TPS、自建 vs 买 API、按显存预算分档与量化 / 引擎选型；30 节正文 + 现象解释索引 + 公式与参数速查 | 团队技术底稿、新人入门、选型讨论 |
 
 专题文档：
 
